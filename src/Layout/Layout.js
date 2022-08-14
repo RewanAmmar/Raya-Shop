@@ -6,6 +6,7 @@ import { createUser, getallchildcategory, getallmaincategory, getallsubcategory,
 import Component_Header from '../Shared/Component_Header/Component_Header';
 import { collection, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '../Firebase Configration/Firebase';
+import Navbar from './../Navbar/navbar';
 
 
 
@@ -49,7 +50,7 @@ export default function Layout() {
 
     useEffect(() => {
 
-        const prd = getCategory().then(function (res) {
+         getCategory().then(function (res) {
             setMainCategory(res)
         })
 
@@ -80,6 +81,7 @@ export default function Layout() {
                             {childCategory.map(ele => {
                                 return (<a className='badge bg-info p-3' key={ele.child_id} onClick={() => getChildCat(ele)}>{ele.child_category}</a>)
                             })}
+                            <Navbar mainCat={mainCategory}/>
                         </div>
 
                         <div>

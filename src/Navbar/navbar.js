@@ -24,7 +24,18 @@ class Navbar extends Component {
     whichComponentToShow: 'Nav'
   };
 
+  
+  componentDidUpdate = () => {  
+
+
+    const x =  this.props.mainCat
+    console.log(x)
+
+
+  }
+
   render() {
+
 
     const moveData = (data) => {
       this.setState({ whichComponentToShow: `${data}` })
@@ -96,7 +107,7 @@ class Navbar extends Component {
 HotDeals</span>
 </a>
 <div className="subnav">
-<button class="subnavbtn">Mobiles&Tablets</button>
+<Link to="/Mobiles&Tablets"><button class="subnavbtn">Mobiles&Tablets</button></Link>
 
 <div className=" subnav-content">
 
@@ -156,7 +167,7 @@ HotDeals</span>
 </div> 
 </div></div>
 <div class="subnav">
-<button class="subnavbtn">Television </button>
+<Link to="/Televisions"><button class="subnavbtn">Television </button></Link>
 <div class="subnav-content">
 <div className='row d-flex gx-0'>
 <div className='row'>
@@ -308,7 +319,8 @@ HotDeals</span>
    <span className='foottxt'> Shop All Small Appliances</span>
     </a></div>
 </div>
-</div></div>
+</div>
+</div>
 
 <a  className='nava' href="#home"> Kitchen Applicances</a>
 <a  className='nava' href="#home">  Electronics</a>

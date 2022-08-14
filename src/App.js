@@ -21,6 +21,8 @@ function App() {
     <div>
      
       <Router>
+        <Route path="/Mobiles&Tablets" exact component={Layout} />
+        <Route path="/Televisions" exact component={Layout} />
       <Navbar/>
       <Switch>
         <Route path='/' exact component={Home}/> 
@@ -29,9 +31,10 @@ function App() {
         <Route path="/cart" exact component={Cart}/>
         <Route path="/payInstallment" exact component={PayInstallment}/>
         <Route path="/storeLocator" exact component={StoreLocator}/>    
-
       </Switch>      
       </Router>
+
+
       
 
     </div>
