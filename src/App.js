@@ -11,7 +11,7 @@ import Cart from './Cart/Cart';
 import PayInstallment from './PayInstallment/PayInstallment';
 import StoreLocator from './StoreLocator/StoreLocator';
 
-import React, { Component, Suspense ,useEffect} from "react";
+import React, { Component, Suspense ,useEffect , useState} from "react";
 import cookie from "js-cookie";
 import "./App.css";
 
@@ -30,10 +30,13 @@ import Slider from 'react-slick/lib/slider';
 import Product_Card from './Shared/Product_Card/Product_Card';
 import Product_Component from './Shared/Product_Component/Product_Component';
 import Product_Details from './Product_Details/Product_Details';
+import { ProductByCatProvider } from './Shared/Contexts/ProductByCatProvider';
+import { getCategory } from './Shared/Firebase/Products_Functions';
+import Footer from './Footer/Footer';
 
 
 function App() {
-
+  const [productObj, setProductObj] = useState({})
     
   return (
    
@@ -45,20 +48,31 @@ function App() {
 
 <Advantages />
 </Suspense>
+<Router>
+        <ProductByCatProvider value={{ productObj, setProductObj }}>
+          <Navbar />
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/Home' exact component={Home} />
+            <Route path='/Mobiles&Tablets' exact component={Layout} />
+            <Route path='/Televisions' exact component={Layout} />
+            <Route path='/Details/:prdId' exact component={Product_Details} />
+            <Route path='/login' exact component={Login} />
+            <Route path='/register' exact component={Register} />
+            <Route path='/cart' exact component={Cart} />
+            <Route path='/payInstallment' exact component={PayInstallment} />
+            <Route path='/storeLocator' exact component={StoreLocator} />
+          </Switch>
+          <Footer />
+        </ProductByCatProvider>
+      </Router>
       <Router>
+
         <Route path="/Mobiles&Tablets" exact component={Layout} />
         <Route path="/Televisions" exact component={Layout} />
       <Navbar/>
-      {/* <Side_Account/> */}
-      {/* <Wishlist/> */}
-      {/* <Cart/> */}
-      {/* <Slider/> */}
-      {/* <Account_Overview/> */}
-      {/* <Account_Setting/> */}
-      {/* <Address_Book/> */}
-     {/* <Product_Component/> */}
-     <Wishlist/>
-     <Product_Details/>
+     
+
       <Switch>
         <Route path='/' exact component={Home}/> 
         <Route path="/login" exact component={Login}/>
@@ -79,3 +93,6 @@ function App() {
 }
 
 export default App;
+
+
+ 

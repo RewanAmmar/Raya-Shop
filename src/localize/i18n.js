@@ -6,11 +6,19 @@ import { initReactI18next } from "react-i18next";
  import translationAR from "../local/translationAR.json";
 import { useEffect } from "react";
 import cookie from "js-cookie";
-
+import HttpApi from 'i18next-http-backend'
 // const currentResourceCode = cookie.get ("i18next") ||"en"
 // const currentResource = resources.find(l => l.code === currentResourceCode) 
 
-export const resources = {
+
+
+i18n
+//  .use(Backend)   
+.use(HttpApi) 
+ .use(LanguageDetector)    
+ .use(initReactI18next)    
+ .init({
+  resources : {
   en: {
     translation: translationEN
   },
@@ -18,22 +26,24 @@ export const resources = {
     translation: translationAR,
     dir:"rtl"
   }
-};
-
-i18n
- .use(Backend)    
- .use(LanguageDetector)    
- .use(initReactI18next)    
- .init({
-  resources,
-  lng: "en",
-
+},
+  // resources,
+  // lng: document.querySelector("html").lang,
+supportedLngs: ['en' , 'ar'],
     fallbackLng: "en",
-    debug: true,
+    // debug: true,
+detection:{
+  order: [ 'cookie', 'localStorage', 'htmlTag', 'path', 'subdomain'],
+caches:['cookie'],
+},
+// backend:{
+//   loadPath: '/assets/locales/{{lng}}/translation.json',
 
-    interpolation: {
-      escapeValue: false // not needed for react as it escapes by default
-    }
+// },
+
+    // interpolation: {
+    //   escapeValue: false // not needed for react as it escapes by default
+    // }
   });
 
 
