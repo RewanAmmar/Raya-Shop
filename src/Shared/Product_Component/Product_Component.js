@@ -4,6 +4,7 @@ import { FiHeart } from "react-icons/fi";
 import StarRating from 'star-rating-react';
 import { FaSortAmountDown } from "react-icons/fa";
 import Product_Card from "../Product_Card/Product_Card";
+import { useSelector } from "react-redux";
 
 
 
@@ -11,6 +12,18 @@ import Product_Card from "../Product_Card/Product_Card";
 
 const Product_Component = (props) => {
 
+
+    
+    const state = useSelector((state) => state.product)
+   
+
+
+
+    useEffect(() => {
+
+        // console.log(state)
+
+    }, []);
 
     return (<>
 
@@ -25,7 +38,7 @@ const Product_Component = (props) => {
                     <div className="col-12 py-5">
                             <div className="d-flex mx-3 col-12 justify-content-between flex-wrap">
 
-                                <span className="col-md-6 col-12">{props.prd.length} Product</span>
+                                <span className="col-md-6 col-12">{state.length} Product</span>
 
                                 <div className="d-flex">
                                 <FaSortAmountDown />
@@ -42,7 +55,7 @@ const Product_Component = (props) => {
 
                         <div className="d-flex flex-wrap justify-content-center">
                             
-                        <Product_Card prd={props.prd}/>
+                        <Product_Card prd={state}/>
 
                         </div>
 

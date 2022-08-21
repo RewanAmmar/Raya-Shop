@@ -83,7 +83,7 @@ export default function Navbar() {
 
       const headerBadge = res
       const header = element.main_category
-      const prd = []
+      let prd = []
       // setHeaderBadge(res)
       // setHeader(element.main_category)
 
@@ -95,31 +95,35 @@ export default function Navbar() {
               res.map(ele => {
 
                 getallchildcategory(ele).then(result => {
-                  {
-                    result.map(async (ele) => {
+                  // {
+                  //   result.map(async (ele) => {
 
-                      // const isFound = prd.some(element => {
-                      //   if (element.prd_id === ele.prd_id) {
-                      //     return true;
-                      //   } else {
-                      //     return false;
-                      //   }
-                      // });
-                      // if (!isFound) {
-                      //   setPrd(prev => {
-                      //     latest.current = [...prev, ele];
-                      //     return [...prev, ele];
-                      //   });
-                      // } else {
+                  //     // const isFound = prd.some(element => {
+                  //     //   if (element.prd_id === ele.prd_id) {
+                  //     //     return true;
+                  //     //   } else {
+                  //     //     return false;
+                  //     //   }
+                  //     // });
+                  //     // if (!isFound) {
+                  //     //   setPrd(prev => {
+                  //     //     latest.current = [...prev, ele];
+                  //     //     return [...prev, ele];
+                  //     //   });
+                  //     // } else {
 
-                      // }
-                      await prd.push(ele)
-                      return ele
-                    })
-                  }
+                  //     // }
+                  //     await prd.push(ele)
+                  //     return ele
+                  //   })
+                  // }
+                  prd = [...result,...prd]
+                  console.log(prd)
+                  dispatch(productComData({ element, prd, headerBadge, header }))
                 })
               })
-              dispatch(productComData({ element, prd, headerBadge, header }))
+              // console.log(prd)
+              // dispatch(productComData({ element, prd, headerBadge, header }))
             }
 
           })
@@ -148,34 +152,37 @@ export default function Navbar() {
         res.map(ele => {
 
           getallchildcategory(ele).then(result => {
-            {
-              result.map(async (ele) => {
+            // {
+            //   result.map(async (ele) => {
 
-                // const isFound = x.some(element => {
-                //   if (element.prd_id === ele.prd_id) {
-                //     return true;
-                //   } else {
-                //     return false;
-                //   }
-                // });
-                // if (!isFound) {
-                //   // setPrd(prev => {
-                //   //   latest.current = [...prev, ele];
-                //   //   return [...prev, ele];
-                //   // });
-                //   return 
-                // } else {
+            //     // const isFound = x.some(element => {
+            //     //   if (element.prd_id === ele.prd_id) {
+            //     //     return true;
+            //     //   } else {
+            //     //     return false;
+            //     //   }
+            //     // });
+            //     // if (!isFound) {
+            //     //   // setPrd(prev => {
+            //     //   //   latest.current = [...prev, ele];
+            //     //   //   return [...prev, ele];
+            //     //   // });
+            //     //   return 
+            //     // } else {
 
-                // }
-                await prd.push(ele)
-                return ele
-              })
-            }
+            //     // }
+            //     await prd.push(ele)
+            //     return ele
+            //   })
+            // }
+            prd = [...result,...prd]
+            console.log(prd)
+            dispatch(productComData({ element, prd, headerBadge, header }))
           })
         })
       }
       // console.log({ element, x, headerBadge, header })
-      dispatch(productComData({ element, prd, headerBadge, header }))
+     
     })
 
   }

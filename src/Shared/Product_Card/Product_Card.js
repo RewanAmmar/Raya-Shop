@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdCompare } from "react-icons/md";
 import { FiHeart } from "react-icons/fi";
 import StarRating from 'star-rating-react';
@@ -9,6 +9,12 @@ import Product_Details from './../../Product_Details/Product_Details';
 const Product_Card = (props) => {
 
     const products = props.prd
+
+    useEffect(() => {
+
+        
+
+    }, []);
 
 
     return (
