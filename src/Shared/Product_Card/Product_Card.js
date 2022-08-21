@@ -3,9 +3,18 @@ import { MdCompare } from "react-icons/md";
 import { FiHeart } from "react-icons/fi";
 import StarRating from 'star-rating-react';
 import { FaSortAmountDown } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+
+
+
+
+    
+
+
+
 
 const Product_Card = (props) => {
-
+const { t, i18n } = useTranslation();
     const products = props.prd
 
 
@@ -30,7 +39,7 @@ const Product_Card = (props) => {
                         <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                         <button type="button" class="compareButton p-3 text-sm mb-2">
                             <MdCompare className="mx-3" size={18} />
-                            Compare
+                            {t("367.label")}
                         </button>
                     </div>
                 </div>

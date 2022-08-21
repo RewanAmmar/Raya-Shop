@@ -16,8 +16,18 @@ import {BsJournalBookmark} from "react-icons/bs"
 import {GrSecure} from "react-icons/gr"
 import {BiStoreAlt} from "react-icons/bi"
 
+import { useTranslation } from "react-i18next";
 
-export default function Product_Details() {
+
+
+const Product_Details= () => {
+
+    const { t, i18n } = useTranslation();
+
+
+
+
+
 
     const settings = {
         className: "slider variable-width",
@@ -137,14 +147,14 @@ export default function Product_Details() {
                             </div>
                             <div className='col-12 d-flex align-items-center mt-4 Product_Specifications p-3'>
                                 <div className='col-8'>
-                                    Or Pay with Raya Installments starting From 401 / 24 Months with Raya Installments
+                                {t("a.label")} 
                                 </div>
                                 <div className='col-4'>
-                                    <a href='#'>More payment methods <AiOutlineRight /></a>
+                                    <a href='#'>{t("b.label")} <AiOutlineRight /></a>
                                 </div>
                             </div>
                             <div className='col-md-6 col-12 justify-content-between align-items-center mt-4 d-flex'>
-                                <span className='Product_Description_txt'>Select Qty:</span>
+                                <span className='Product_Description_txt'>{t("j.label")} </span>
                                 <div>
                                     <button className='btn mx-3' onClick={dec}><FaMinus /></button>
                                     {count}
@@ -154,22 +164,22 @@ export default function Product_Details() {
                             <div class="line col-md-6 col-12 mt-2"></div>
 
                             <div className='col-12 mt-4 d-flex'>
-                                <button className='btn col-5 d-flex flex-grow-1 justify-content-center align-items-center me-2 Add_To_Cart px-5 py-3'><BsCart2 className='mx-2' size={25} />Add To Cart</button>
-                                <button className='btn col-5 d-flex flex-grow-1 justify-content-center align-items-center ms-2 Add_To_Compare px-5 py-3'>Add To Compare</button>
+                                <button className='btn col-5 d-flex flex-grow-1 justify-content-center align-items-center me-2 Add_To_Cart px-5 py-3'><BsCart2 className='mx-2' size={25} />{t("c.label")} </button>
+                                <button className='btn col-5 d-flex flex-grow-1 justify-content-center align-items-center ms-2 Add_To_Compare px-5 py-3'>{t("d.label")} </button>
                             </div>
                             <div className='col-12 mt-4 d-flex'>
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div><BsJournalBookmark size={23}/></div>
                                     <div className='d-flex flex-column mx-3'>
-                                        <span className='w-75'>Delivery Time Inside Cairo & Giza</span>
-                                        <span className='Product_Specifications_txt'>3-5 Business Days</span>
+                                        <span className='w-75'>{t("e.label")} </span>
+                                        <span className='Product_Specifications_txt'>{t("f.label")} </span>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div><BsJournalBookmark size={23}/></div>
                                     <div className='d-flex flex-column mx-3'>
-                                        <span className='w-75'>Delivery Time Outside Cairo & Giza</span>
-                                        <span className='Product_Specifications_txt'>3-5 Business Days</span>
+                                        <span className='w-75'>{t("g.label")} </span>
+                                        <span className='Product_Specifications_txt'>{t("h.label")} </span>
                                     </div>
                                 </div>
                             </div>
@@ -178,29 +188,29 @@ export default function Product_Details() {
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div><BsShieldCheck size={30}/></div>
                                     <div className='d-flex flex-column mx-3'>
-                                        <span>Warranty</span>
-                                        <span className='Product_Specifications_txt'>1 Year</span>
+                                        <span>{t("i.label")} </span>
+                                        <span className='Product_Specifications_txt'>{t("k.label")} </span>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div><GrSecure size={30}/></div>
                                     <div className='d-flex flex-column mx-2'>
-                                        <span>Secure Payment</span>
-                                        <span className='Product_Specifications_txt'>Cash On Delivery</span>
+                                        <span>{t("l.label")} </span>
+                                        <span className='Product_Specifications_txt'>{t("m.label")} </span>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div><MdOutlineBook size={30}/></div>
                                     <div className='d-flex flex-column mx-2'>
-                                        <span>Free Return</span>
-                                        <span className='Product_Specifications_txt'>For 14 Days</span>
+                                        <span>{t("n.label")} </span>
+                                        <span className='Product_Specifications_txt'>{t("o.label")} </span>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div><BiStoreAlt size={30}/></div>
                                     <div className='d-flex flex-column mx-2'>
-                                        <span>Sold By</span>
-                                        <span className='Product_Specifications_txt'><a href='#'>Dream Store</a></span>
+                                        <span>{t("p.label")} </span>
+                                        <span className='Product_Specifications_txt'><a href='#'>{t("q.label")} </a></span>
                                     </div>
                                 </div>
                             </div>
@@ -212,12 +222,12 @@ export default function Product_Details() {
 
 
                         <div className='col-7'>
-                            <div className='d-flex justify-content-center mt-5 mb-2'><h3 className='Details_Headers'>PRODUCT DETAILS</h3></div>
+                            <div className='d-flex justify-content-center mt-5 mb-2'><h3 className='Details_Headers'>{t("r.label")} </h3></div>
                             {/* -------------------------------------------------------------------------------------------------------------------------------------------- */}
                             <a className="box p-0 m-0" data-bs-toggle="collapse" href="#Description" role="button" aria-expanded="false" aria-controls="collapseExample">
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <div>
-                                        <span>Product Description</span>
+                                        <span>{t("s.label")} </span>
                                     </div>
                                     <div>
                                         <span className='fs-1'><GrFormAdd /></span>
@@ -226,7 +236,7 @@ export default function Product_Details() {
                             </a>
                             <div className="collapse" id="Description">
                                 <div className='d-flex flex-column '>
-                                    <p className='Product_Description_txt'>Brand: Xiaomi</p>
+                                <p className='Product_Description_txt'>Brand: Xiaomi</p>
                                     <p className='Product_Description_txt'>Memory Capacity: 128GB</p>
                                     <p className='Product_Description_txt'>Ram: 8GB</p>
                                     <p className='Product_Description_txt'>Color: Grey</p>
@@ -237,7 +247,7 @@ export default function Product_Details() {
                             <a className="box p-0 m-0" data-bs-toggle="collapse" href="#Specifications" role="button" aria-expanded="false" aria-controls="collapseExample">
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <div>
-                                        <span>Product Specifications</span>
+                                        <span>{t("x.label")} </span>
                                     </div>
                                     <div>
                                         <span className='fs-1'><GrFormAdd /></span>
@@ -315,7 +325,7 @@ export default function Product_Details() {
                             <a className="box p-0 m-0" data-bs-toggle="collapse" href="#Refund" role="button" aria-expanded="false" aria-controls="collapseExample">
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <div>
-                                        <span>Return & Refund</span>
+                                        <span>{t("y.label")} </span>
                                     </div>
                                     <div>
                                         <span className='fs-1'><GrFormAdd /></span>
@@ -324,7 +334,7 @@ export default function Product_Details() {
                             </a>
                             <div className="collapse" id="Refund">
                                 <div className='Product_Description_txt'>
-                                    <p className='Product_Specifications_txt'>Returns within 14 days of delivery, Learn more about <a href='#'> the Return & Refund Policy</a></p>
+                                    <p className='Product_Specifications_txt'>   {t("z.label")} <a href='#'>{t("aw.label")}  </a></p>
                                 </div>
                             </div>
 
@@ -333,7 +343,7 @@ export default function Product_Details() {
 
                     <div className='col-12 flex-column d-flex align-items-center justify-content-center'>
                         <div className='col-5 mt-5'>
-                            <div className='d-flex justify-content-center my-5 '><h3 className='Details_Headers'>RATING & REVIEWS</h3></div>
+                            <div className='d-flex justify-content-center my-5 '><h3 className='Details_Headers'>   {t("as.label")}</h3></div>
                             <div className='progress_Rating_bg'>
                                 <div className='d-flex justify-content-evenly align-items-center'>
                                     <span>0</span><ProgressBar className='progress_Rating' now={0} /><span>5/5</span>
@@ -355,7 +365,7 @@ export default function Product_Details() {
                     </div>
 
                     <div className='col-12 mt-5'>
-                        <div className='d-flex justify-content-center mt-5 mb-2'><h3 className='Details_Headers'>SIMILAR PRODUCTS</h3></div>
+                        <div className='d-flex justify-content-center mt-5 mb-2'><h3 className='Details_Headers'>   {t("aq.label")}</h3></div>
                         <Slider className="slick-list col-10" {...settings}>
 
                             <div
@@ -390,7 +400,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -427,7 +437,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -463,7 +473,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -499,7 +509,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -535,7 +545,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -571,7 +581,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -607,7 +617,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -643,7 +653,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -679,7 +689,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -715,7 +725,7 @@ export default function Product_Details() {
                                     </p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -728,7 +738,7 @@ export default function Product_Details() {
             <div className='container-fluid Viewed_Product'>
 
                 <div className='container mt-5 py-5'>
-                    <div className='d-flex justify-content-center mb-3 mb-2'><h3 className='Details_Headers'>PRODUCT DETAILS</h3></div>
+                    <div className='d-flex justify-content-center mb-3 mb-2'><h3 className='Details_Headers'>  {t("r.label")} </h3></div>
                     <Slider className="slick-list" {...settings}>
 
                         <div
@@ -763,7 +773,7 @@ export default function Product_Details() {
                                 </p>
                                 <button type="button" class="compareButton p-3 text-sm mb-2">
                                     <MdCompare className="mx-3" size={18} />
-                                    Compare
+                                    {t("367.label")}
                                 </button>
                             </div>
                         </div>
@@ -799,7 +809,7 @@ export default function Product_Details() {
                                 </p>
                                 <button type="button" class="compareButton p-3 text-sm mb-2">
                                     <MdCompare className="mx-3" size={18} />
-                                    Compare
+                                    {t("367.label")}
                                 </button>
                             </div>
                         </div>
@@ -835,7 +845,7 @@ export default function Product_Details() {
                                 </p>
                                 <button type="button" class="compareButton p-3 text-sm mb-2">
                                     <MdCompare className="mx-3" size={18} />
-                                    Compare
+                                    {t("367.label")}
                                 </button>
                             </div>
                         </div>
@@ -848,3 +858,4 @@ export default function Product_Details() {
         </>
     )
 }
+export default  Product_Details;

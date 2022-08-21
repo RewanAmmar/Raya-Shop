@@ -4,11 +4,11 @@ import InternalHeader from '../InternalHeader/InternalHeader'
 import './Register.css'
 import { useHistory } from 'react-router-dom'
 
+import { useTranslation } from "react-i18next";
 
+const Register= () => {
 
-export default function Register() {
-
-
+    const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -16,39 +16,34 @@ export default function Register() {
     <InternalHeader/>
      <div className='register'>
         <div className='container'>
-      <div className='link3'><span>&lt;</span><Link to='/login'> Back</Link></div>
+      <div className='link3'><span>&lt;</span><Link to='/login'> {t("174.label")}</Link></div>
             <div className='content '>
              
                 <div className='rightRigister'>
-                  <h1>CREATE ACCOUNT </h1>
-                  <h2>Login to your account for a faster checkout process</h2>
+                  <h1>{t("163.label")} </h1>
+                  <h2>{t("164.label")}</h2>
                   <form >
-                    <input type="text" className='form-control' required placeholder='Enter Name'
+                    <input type="text" className='form-control' required placeholder={t("168.label")}
                     />
                     
-                    <input type="text" required className='form-control' placeholder='Enter Email'
+                    <input type="text" required className='form-control' placeholder={t("169.label")}
                    />
                     
-                    <input type="number" required className='form-control' placeholder='Phone'
+                    <input type="number" required className='form-control' placeholder={t("170.label")}
                    />
                   
-                    <input type="password" required className='form-control' placeholder='Enter Password'
+                    <input type="password" required className='form-control' placeholder={t("171.label")}
                     />
                   
                     
-                    <button className='btn button2Register'>Create Account</button>
+                    <button className='btn button2Register'>{t("163.label")}</button>
                   </form>
                 </div>
                 <div className='left'>
                   <div className='imgbg d-flex'>
-                    <h1>Don’t Have An <br/> Account?</h1>
-                    <p>No Problem, Create an Account &amp; Enjoy;</p>
-                    <ul>
-                      <li>// Fast &amp; Easy checkout</li>
-                      <li>// Order Tracking</li>
-                      <li>// Installments Tracking</li>
-                    </ul>
-                    <Link to="/login"><button  className='btn btn-light border-2 button1'>Login To My Account</button></Link>
+                    <h1>{t("165.label")}</h1>
+                    <p>{t("166.label")}</p>
+                    <Link to="/login"><button  className='btn btn-light border-2 button1'>{t("167.label")}</button></Link>
                   </div>
                 </div>
             </div>
@@ -56,9 +51,10 @@ export default function Register() {
         
     </div>
             <footer className='footerRegister'>
-              <p>Any personal information you give us will be handled according to our <a href=''>Privacy Policy</a></p>
+              <p>{t("172.label")}<a href=''>{t("173.label")}</a></p>
                 
             </footer>
             </>
   )
 }
+export default Register;

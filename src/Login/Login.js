@@ -4,9 +4,13 @@ import InternalHeader from '../InternalHeader/InternalHeader';
 import './Login.css';
 import './LoginResposive.css'
 
-export default function Login() {
-  
 
+  
+  import { useTranslation } from "react-i18next";
+
+  const Login= () => {
+
+      const { t, i18n } = useTranslation();
   
 
 
@@ -15,30 +19,30 @@ export default function Login() {
   <InternalHeader/>
     <div className='login'>
         <div className='container'>
-      <div className='link3'><span>&lt;</span><a href=''> Back</a></div>
+      <div className='link3'><span>&lt;</span><a href=''> {t("162.label")} </a></div>
             <div className='content '>
                 <div className='left'>
                   <div className='imgbg'>
-                    <h1>Don’t Have An <br/> Account?</h1>
-                    <p>No Problem, Create an Account &amp; Enjoy;</p>
+                    <h1>{t("150.label")}</h1>
+                    <p>{t("151.label")}</p>
                     <ul>
-                      <li>// Fast &amp; Easy checkout</li>
-                      <li>// Order Tracking</li>
-                      <li>// Installments Tracking</li>
+                      <li>{t("152.label")}</li>
+                      <li>{t("153.label")}</li>
+                      <li>{t("154.label")}</li>
                     </ul>
-                    <button className='btn btn-light border-2 button1' >Create Account</button>
+                    <button className='btn btn-light border-2 button1' >{t("155.label")}</button>
                   </div>
                 </div>
                 <div className='rightLogin'>
-                  <h1>LOGIN</h1>
-                  <h2>Login to your account for a faster checkout process</h2>
+                  <h1>{t("156.label")}</h1>
+                  <h2>{t("157.label")}</h2>
                 <form>
                   <input type="text" className='form-control' placeholder='Enter Email'/>
                   {/* <span>This field is required</span> */}
                   <input type="password" className='form-control' placeholder='Enter Password'/>
                   {/* <span>This field is required</span> */}
-                  <div className='link'><a href='#'>Forgot Password?</a></div>
-                  <button className='btn btn-primary button2'>Login to My Account</button>
+                  <div className='link'><a href='#'>{t("158.label")}</a></div>
+                  <button className='btn btn-primary button2'>{t("159.label")}</button>
                 </form>
                 </div>
             </div>
@@ -46,9 +50,10 @@ export default function Login() {
         
     </div>
             <footer className='footerLogin'>
-              <p>Any personal information you give us will be handled according to our <a href=''>Privacy Policy</a></p>
+              <p>{t("160.label")} <a href=''>{t("161.label")} </a></p>
                 
             </footer>
             </>
   )
 }
+export default  Login;

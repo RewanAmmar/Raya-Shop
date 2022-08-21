@@ -3,8 +3,13 @@ import { MdCompare } from "react-icons/md";
 import { FiHeart } from "react-icons/fi";
 import StarRating from 'star-rating-react';
 
-export default function Wishlist() {
 
+import { useTranslation } from "react-i18next";
+
+
+    const Wishlist= () => {
+
+        const { t, i18n } = useTranslation();
 
 
   return (
@@ -13,8 +18,8 @@ export default function Wishlist() {
         <div className='row'>
 
             <div className='col-12 my-5 ms-3'>
-                <h3 className='pageHeader'>MY WISHLIST</h3>
-                <p className='Product_Description_txt'>You have 4 products in your list</p>
+                <h3 className='pageHeader'>{t("aa.label")}</h3>
+                <p className='Product_Description_txt'>{t("ak.label")}</p>
             </div>
 
             <div className='col-12 d-flex flex-wrap justify-content-center'>
@@ -36,7 +41,7 @@ export default function Wishlist() {
                                     <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -58,7 +63,7 @@ export default function Wishlist() {
                                     <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -80,7 +85,7 @@ export default function Wishlist() {
                                     <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -102,7 +107,7 @@ export default function Wishlist() {
                                     <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -124,7 +129,7 @@ export default function Wishlist() {
                                     <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -146,7 +151,7 @@ export default function Wishlist() {
                                     <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -168,7 +173,7 @@ export default function Wishlist() {
                                     <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -190,7 +195,7 @@ export default function Wishlist() {
                                     <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                                     <button type="button" class="compareButton p-3 text-sm mb-2">
                                         <MdCompare className="mx-3" size={18} />
-                                        Compare
+                                        {t("367.label")}
                                     </button>
                                 </div>
                             </div>
@@ -202,3 +207,4 @@ export default function Wishlist() {
     </>
   )
 }
+export default  Wishlist;

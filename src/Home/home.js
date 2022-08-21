@@ -17,7 +17,13 @@ import StarRating from "star-rating-react";
 import Carousel from "react-bootstrap/Carousel";
 import cool from "../assets/cool.webp";
 import './home.css'
+import { useTranslation } from "react-i18next";
 
+
+
+// const Home = () => {
+
+   
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -42,7 +48,9 @@ function SamplePrevArrow(props) {
 }
 
 
-export default class Home extends React.Component {
+//  export default 
+class Home extends React.Component { 
+//  { t, i18n } = useTranslation();
   render() {
     const settings = {
       className: "slider variable-width",
@@ -133,7 +141,10 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText text-danger">Hot Deals</p>
+                  <p className="sectionText text-danger">
+                    {/* Hot Deals */}
+                    {/* {t("382.label")} */}
+                    </p>
                 </div>
               </a>
               <a
@@ -148,7 +159,10 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Mobiles & Tablets</p>
+                  <p className="sectionText ">
+                    {/* Mobiles & Tablets */}
+                    {/* {t("383.label")} */}
+                    </p>
                 </div>
               </a>
               <a
@@ -163,7 +177,10 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Televisions</p>
+                  <p className="sectionText ">
+                    {/* Televisions */}
+                    {/* {t("385.label")} */}
+                    </p>
                 </div>
               </a>
               <a
@@ -2150,4 +2167,5 @@ export default class Home extends React.Component {
       </>
     );
   }
-}
+ }
+  export default  Home ;

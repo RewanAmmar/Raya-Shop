@@ -3,27 +3,30 @@ import './payInstallment.css'
 import Footer from '../Footer/Footer'
 import { FaCcMastercard } from "react-icons/fa";
 import {RiVisaLine} from "react-icons/ri";
+import { useTranslation } from "react-i18next";
 
-export default function PayInstallment() {
+    const PayInstallment = () => {
+
+        const { t, i18n } = useTranslation();
   return (
     <>
  
     <div className='payInstallment py-5'>
         <div className='container'>
             <div className='payInstallmentContent d-flex flex-column justify-content-center align-items-center py-5'>
-                <h1 className='py-2'>PAY INSTALLMENTS</h1>
-                <h2  className='py-2'>Pay Your Installment Online</h2>
+                <h1 className='py-2'>{t("17.label")}</h1>
+                <h2  className='py-2'>{t("18.label")}</h2>
                 <div className='pAndIcons'>
-                    <p>Pay your installment now using Visa or Mastercard.</p>
+                    <p>{t("19.label")}</p>
                     <div className='icons'>
                     <RiVisaLine className='mx-3 fs-1'/>
                         <FaCcMastercard  className='mx-3 fs-1'/>
                     </div>
                 </div>
                 <form>
-                    <label>Enter your nation id</label>
+                    <label>{t("20.label")}</label>
                      <input className='form-control inId' placeholder='ex. 0000 0000 0000 0000' type="number"/>
-                     <button className='btn border-2 button2'>Find Due Amounts</button>
+                     <button className='btn border-2 button2'>{t("21.label")}</button>
                 </form>
                 
                     
@@ -36,3 +39,4 @@ export default function PayInstallment() {
     </>
   )
 }
+export default PayInstallment;

@@ -17,7 +17,12 @@ import { IoIosArrowBack } from "react-icons/io";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import i18n from "i18next";
+//  const changeLanguage = (event) => {
 
+//     i18n.changeLanguage(event.target.value);
+
+//   };
 class Navbar extends Component {
   state = {
     visible: true,
@@ -33,7 +38,7 @@ class Navbar extends Component {
 
 
   }
-
+ 
   render() {
 
 
@@ -69,7 +74,9 @@ class Navbar extends Component {
           <Link to="/payInstallment"><li className='oneli'><a className='onea mx-5' href='#'> <BsWallet2 size={18}/>  Pay Installment</a></li></Link>  
             <li className='oneli'><a className='onea mx-2' href='#'> <FiPhoneCall size={18}/>  Call 19900</a></li>
             <Link to="/storeLocator"><li className='oneli'><a className='onea mx-5' href='#'> <TbBuildingStore size={18}/>  Store Locator</a></li></Link>
-            <li className='oneli'><a className='onea' href='#'><TbWorld size={18}/>  العربية</a></li>
+            <li className='oneli'><a className='onea' href='#' 
+            // onChange={changeLanguage}
+            ><TbWorld size={18}/>  العربية</a></li>
           </ul>
       </div>
       </div>
@@ -586,4 +593,3 @@ HotDeals</span>
 
 }
 export default Navbar
-

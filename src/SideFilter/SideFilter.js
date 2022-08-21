@@ -1,8 +1,17 @@
 import React from 'react'
 import { GrFormAdd } from "react-icons/gr";
 
+import { useTranslation } from "react-i18next";
 
-export default function SideFilter() {
+
+const SideFilter= () => {
+
+    const { t, i18n } = useTranslation();
+
+
+
+
+
 
 
 
@@ -10,12 +19,12 @@ export default function SideFilter() {
     <>
       <div className=' d-flex  flex-column pt-4'>
        
-        <h2>Filter by</h2>
+        <h2>{t("177.label")}</h2>
         <p>
           <a className="box" data-bs-toggle="collapse" href="#a" role="button" aria-expanded="false" aria-controls="collapseExample">
             
             <div className='d-flex justify-content-between align-items-center'>
-              <span>price</span>
+              <span>{t("178.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
              
@@ -35,43 +44,43 @@ export default function SideFilter() {
         <p>
           <a className="box" data-bs-toggle="collapse" href="#b" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Number Of Speeds</span>
+              <span>{t("179.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="b">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />1 Speed<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />2 Speed<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />3 Speed<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />4 Speed<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />5 Speed<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />{t("206.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("207.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />{t("208.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("209.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("210.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#c" role="button" aria-expanded="false" aria-controls="collapseExample">
 
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Number Of Blades</span>
+              <span>{t("180.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="c">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />2 Blades<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />3 Blades<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />4 Blades<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />5 Blades<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />6 Blades<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("211.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />{t("212.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("213.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("214.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />{t("215.label")}<br />
         </div>
         <hr />
 
         <p>
           <a className="box" data-bs-toggle="collapse" href="#d" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Fan Diameter</span>
+              <span>{t("181.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -83,13 +92,13 @@ export default function SideFilter() {
             <div>
               <input type='text' placeholder='Search' />
             </div>
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />10 cm<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />15 cm<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />20 cm<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />25 cm<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />30 cm<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("216.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("217.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("218.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("219.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("220.label")}<br />
 
-            <a href='#'>Show More Fan Diameter</a>
+            <a href='#'>{t("222.label")}</a>
           </form>
         </div>
 
@@ -97,7 +106,7 @@ export default function SideFilter() {
         <p>
           <a className="box" data-bs-toggle="collapse" href="#e" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Fan Type</span>
+              <span>{t("182.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -111,20 +120,20 @@ export default function SideFilter() {
             <div>
               <input type='text' placeholder='Search' />
             </div>
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Ceiling Fans<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Stand Fans<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Wall Mount Fans<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Box Fans<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Ventilating Fans<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Table Fans<br />
-            <a href='#'>Show More Fan Type</a>
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("223.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("224.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("225.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("226.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("227.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("228.label")}<br />
+            <a href='#'>{t("229.label")}</a>
           </form>
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#f" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Power Consumption</span>
+              <span>{t("183.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -138,20 +147,20 @@ export default function SideFilter() {
             <div>
               <input type='text' placeholder='Search' />
             </div>
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />2300 watt<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />2400 watt<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />56 watt<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />750 watt<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />1200 watt<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />1400 watt<br />
-            <a href='#'>Show More Power Consumption</a>
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("230.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("231.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("232.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("233.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("234.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("235.label")}<br />
+            <a href='#'>{t("236.label")}</a>
           </form>
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#g" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Vacuum Cleaner Type</span>
+              <span>{t("184.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -165,14 +174,13 @@ export default function SideFilter() {
             <div>
               <input type='text' placeholder='Search' />
             </div>
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Handheld Vacuum Cleaners<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Upright Vacuum Cleaners<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Canister Vacuum Cleaners<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Carpet Vacuum Cleaners<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />
-            Steam Vacuum Cleaners<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Stick Vacuum Cleaners<br />
-            <a href='#'>Show More Vacuum Cleaner Type </a>
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("237.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("238.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("239.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("240.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("241.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("242.label")}<br />
+            <a href='#'>{t("243.label")} </a>
           </form>
         </div>
         <hr />
@@ -180,50 +188,50 @@ export default function SideFilter() {
         <p>
           <a className="box" data-bs-toggle="collapse" href="#h" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Dust Bag Type</span>
+              <span>{t("185.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="h">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Bagged<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />Bagless<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("244.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />{t("245.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#j" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Juicer Type</span>
+              <span>{t("186.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="j">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Citurs press<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />Juice Extractor<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("246.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />{t("247.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#k" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Capacity In Liter</span>
+              <span>{t("187.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="k">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Less Than 1 Liter<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />1 - 1.5 Liters<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />More Than 1.5 Liters<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("248.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />{t("250.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value='x' />{t("251.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#j" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Scale Type</span>
+              <span>{t("189.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -235,48 +243,48 @@ export default function SideFilter() {
             <div>
               <input type='text' placeholder='Search' />
             </div>
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Digital Bathroom Scale<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Mechanical Bathroom Scale<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Digital Kitchen Scale<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Mechanical Kitchen Scale<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Baby Scale<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Luggage Scale<br />
-            <a href='#'>Show More Scale Type</a>
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("259.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("260.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("261.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("262.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("263.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("264.label")}<br />
+            <a href='#'>{t("265.label")}</a>
           </form>
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#l" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Water Temperature Type</span>
+              <span>{t("190.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="l">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Hot & Cold<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Hot, Cold & Normal<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("266.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("267.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#m" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Refrigerator Included</span>
+              <span>{t("191.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="m">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Yes<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />N0<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("268.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("269.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#n" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Number Of Taps</span>
+              <span>{t("192.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -284,75 +292,75 @@ export default function SideFilter() {
         </p>
         <div className="collapse" id="n">
 
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />1 Taps<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />2 Taps<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />3 Taps<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("270.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("271.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("272.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="j" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Remote Control</span>
+              <span>{t("193.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="j">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Yes<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />N0<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("273.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("274.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#k" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Remote Control</span>
+              <span>{t("194.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="k">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Ceramic Heaters<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Fan Heaters<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Halogen Heaters<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Quartz Heaters<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Radiant Heaters<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("275.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("276.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("277.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("278.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("279.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#3" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Iron Type</span>
+              <span>{t("197.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="3">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Dry Iron<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Steam Generator<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Steam Iron<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Garment Steamers<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("280.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("281.label")}r<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("282.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("283.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#l" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Type</span>
+              <span>{t("199.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="l">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Chopper<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("284.label")}<br />
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#m" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Capacity</span>
+              <span>{t("200.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -360,16 +368,16 @@ export default function SideFilter() {
         </p>
         <div className="collapse" id="m">
 
-          < input class="form-check-input" type="checkbox" id="x" name="x" value="x" />1.5 Liter<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />3 Liter<br />
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Unavailable<br />
+          < input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("285.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("286.label")}<br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("287.label")}<br />
 
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="#n" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Cartridge Included</span>
+              <span>{t("201.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -384,7 +392,7 @@ export default function SideFilter() {
         <p>
           <a className="box" data-bs-toggle="collapse" href="#o" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Shop By Category</span>
+              <span>{t("202.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -396,29 +404,29 @@ export default function SideFilter() {
             <div>
               <input type='text' placeholder='Search' />
             </div>
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Mobiles & Tablets<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> Heaters<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />Refrigerators<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> Water Heaters <br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> Kettles<br />
-            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> Vacuum Cleaners<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("288.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> {t("289.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("290.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("291.label")} <br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("292.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> {t("293.label")}<br />
 
 
-            <a href='#'>Show More Shop By Category </a>
+            <a href='#'>{t("294.label")} </a>
           </form>
         </div>
         <hr />
         <p>
           <a className="box" data-bs-toggle="collapse" href="p" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Mixer Type</span>
+              <span>{t("203.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
 
         </p>
         <div className="collapse" id="p">
-          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> Hand Mixer <br />
+          <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> {t("295.label")} <br />
         </div>
 
         <div className="collapse" id="q">
@@ -430,7 +438,7 @@ export default function SideFilter() {
         <p>
           <a className="box" data-bs-toggle="collapse" href="#r" role="button" aria-expanded="false" aria-controls="collapseExample">
             <div className='d-flex justify-content-between align-items-center'>
-              <span>Net Included</span>
+              <span>{t("205.label")}</span>
             <span className='fs-1'><GrFormAdd /></span>
             </div>
           </a>
@@ -443,10 +451,34 @@ export default function SideFilter() {
         </div>
 
         <hr />
+        <p>
+          <a className="box" data-bs-toggle="collapse" href="#dk" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <div className='d-flex justify-content-between align-items-center'>
+              <span>{t("296.label")}</span>
+            <span className='fs-1'><GrFormAdd /></span>
+            </div>
+          </a>
+
+        </p>
+        <div className="collapse" id="dk">
+          <p className='search-text'></p>
+          <form className='search'>
+            <div>
+              <input type='text' placeholder='Search' />
+            </div>
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("297.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> {t("298.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("299.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("300.label")} <br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" />{t("301.label")}<br />
+            <input class="form-check-input" type="checkbox" id="x" name="x" value="x" /> {t("302.label")}<br />
+
+
+            <a href='#'>{t("303.label")} </a>
+          </form>
+        </div>
       </div>
-      {/* </div> */}
-
-
     </>
   )
 }
+export default  SideFilter;

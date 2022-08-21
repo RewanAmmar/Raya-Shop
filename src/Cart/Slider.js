@@ -6,7 +6,7 @@ import { FiHeart } from "react-icons/fi";
 import mob3 from "../assets/mob3.jpg";
 
 import StarRating from "star-rating-react";
-
+ import { useTranslation } from "react-i18next";
 
 
 function SampleNextArrow(props) {
@@ -30,7 +30,14 @@ function SampleNextArrow(props) {
       />
     );
   }
-export default function SliderShared() {
+
+ 
+
+  const SliderShared= () => {
+
+      const { t, i18n } = useTranslation();
+  
+
 
     const settings = {
         className: "slider variable-width",
@@ -115,7 +122,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -152,7 +159,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -188,7 +195,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -224,7 +231,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -260,7 +267,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -296,7 +303,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -332,7 +339,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -368,7 +375,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -404,7 +411,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -440,7 +447,7 @@ export default function SliderShared() {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -455,3 +462,4 @@ export default function SliderShared() {
     </>
   )
 }
+ export default  SliderShared;
