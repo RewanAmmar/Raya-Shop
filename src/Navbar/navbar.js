@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { getallchildcategory, getallmaincategory, getallsubcategory, getCategory, getchildbadge } from "../Shared/Firebase/Products_Functions";
 import { useSelector, useDispatch } from 'react-redux';
 import productComData from './../store/actions/productComData';
+import { search } from './../Shared/Contexts/SearchProvider';
 
 
 
@@ -27,12 +28,11 @@ export default function Navbar() {
   const [subCategory, setSubCategory] = useState([])
   const [childCategory, setChildCategory] = useState([])
 
+  const {searchQuery, setSearchQuery} = useContext(search)
+
 
 
   const latestValue = useRef(childCategory);
-
-
-
 
   const dispatch = useDispatch()
 
@@ -77,15 +77,12 @@ export default function Navbar() {
   function main(element) {
     const header = ""
     const headerBadge = []
-
-
+    let prd = []
+    dispatch(productComData({ element, prd, headerBadge, header }))
     getallmaincategory(element).then(res => {
 
       const headerBadge = res
       const header = element.main_category
-      let prd = []
-      // setHeaderBadge(res)
-      // setHeader(element.main_category)
 
       {
         res.map(ele => {
@@ -95,35 +92,13 @@ export default function Navbar() {
               res.map(ele => {
 
                 getallchildcategory(ele).then(result => {
-                  // {
-                  //   result.map(async (ele) => {
 
-                  //     // const isFound = prd.some(element => {
-                  //     //   if (element.prd_id === ele.prd_id) {
-                  //     //     return true;
-                  //     //   } else {
-                  //     //     return false;
-                  //     //   }
-                  //     // });
-                  //     // if (!isFound) {
-                  //     //   setPrd(prev => {
-                  //     //     latest.current = [...prev, ele];
-                  //     //     return [...prev, ele];
-                  //     //   });
-                  //     // } else {
-
-                  //     // }
-                  //     await prd.push(ele)
-                  //     return ele
-                  //   })
-                  // }
-                  prd = [...result,...prd]
-                  console.log(prd)
+                  prd = [...result, ...prd]
+                 
                   dispatch(productComData({ element, prd, headerBadge, header }))
                 })
               })
-              // console.log(prd)
-              // dispatch(productComData({ element, prd, headerBadge, header }))
+
             }
 
           })
@@ -143,7 +118,7 @@ export default function Navbar() {
     const header = ""
     const headerBadge = []
     let prd = []
-
+    dispatch(productComData({ element, prd, headerBadge, header }))
     getallsubcategory(element).then(res => {
 
       const header = element.sub_category
@@ -152,37 +127,14 @@ export default function Navbar() {
         res.map(ele => {
 
           getallchildcategory(ele).then(result => {
-            // {
-            //   result.map(async (ele) => {
 
-            //     // const isFound = x.some(element => {
-            //     //   if (element.prd_id === ele.prd_id) {
-            //     //     return true;
-            //     //   } else {
-            //     //     return false;
-            //     //   }
-            //     // });
-            //     // if (!isFound) {
-            //     //   // setPrd(prev => {
-            //     //   //   latest.current = [...prev, ele];
-            //     //   //   return [...prev, ele];
-            //     //   // });
-            //     //   return 
-            //     // } else {
-
-            //     // }
-            //     await prd.push(ele)
-            //     return ele
-            //   })
-            // }
-            prd = [...result,...prd]
-            console.log(prd)
+            prd = [...result, ...prd]
+           
             dispatch(productComData({ element, prd, headerBadge, header }))
           })
         })
       }
-      // console.log({ element, x, headerBadge, header })
-     
+
     })
 
   }
@@ -273,7 +225,9 @@ export default function Navbar() {
                   <BiSearchAlt size={30} className="iccon" />
 
                   <input className='inputs' id="address_form"
-                    type="text" aria-describedby="searchHelp" placeholder='Search Product' />
+                    type="text" aria-describedby="searchHelp" placeholder='Search Product' 
+                    onChange={e => setSearchQuery(e.target.value.toLowerCase())}
+                    />
                 </div>
                 <div className=' col-6 d-flex justify-content-end  col-xl-4  order-xl-3 order-2 mr-5 pr-5 pt-3 '>
                   <Link to="/register"><a className='Login me-4' href='#'>Login or Register</a></Link>

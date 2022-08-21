@@ -13,7 +13,7 @@ import StoreLocator from './StoreLocator/StoreLocator';
 import Footer from './Footer/Footer';
 import { useState } from 'react';
 import Product_Details from './Product_Details/Product_Details';
-import { ProductByCatProvider } from './Shared/Contexts/ProductByCatProvider';
+import { SearchProvider } from './Shared/Contexts/SearchProvider';
 import { getCategory } from './Shared/Firebase/Products_Functions';
 import { useEffect } from 'react';
 
@@ -21,7 +21,7 @@ import { useEffect } from 'react';
 
 function App() {
 
-  const [productObj, setProductObj] = useState({})
+  const [searchQuery, setSearchQuery] = useState("")
 
 
   return (
@@ -29,7 +29,7 @@ function App() {
     <div>
 
       <Router>
-        <ProductByCatProvider value={{ productObj, setProductObj }}>
+        <SearchProvider value={{ searchQuery, setSearchQuery }}>
           <Navbar />
           <Switch>
             <Route path='/' exact component={Home} />
@@ -44,7 +44,7 @@ function App() {
             <Route path='/storeLocator' exact component={StoreLocator} />
           </Switch>
           <Footer />
-        </ProductByCatProvider>
+        </SearchProvider>
       </Router>
 
 

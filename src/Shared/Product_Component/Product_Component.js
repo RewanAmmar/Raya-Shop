@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { MdCompare } from "react-icons/md";
 import { FiHeart } from "react-icons/fi";
 import StarRating from 'star-rating-react';
@@ -12,7 +12,9 @@ import { useSelector } from "react-redux";
 
 const Product_Component = (props) => {
 
+    const [sort,setSort]=useState("")
 
+    console.log(sort)
     
     const state = useSelector((state) => state.product)
    
@@ -42,11 +44,11 @@ const Product_Component = (props) => {
 
                                 <div className="d-flex">
                                 <FaSortAmountDown />
-                                <select className="d-flex px-5 border-bottom dropDown active" value="">
-                                    <option className="dropdown-item" value="1" selected disabled>Position</option>
-                                    <option className="dropdown-item" value="2">Price</option>
-                                    <option className="dropdown-item" value="3">A-z</option>
-                                    <option className="dropdown-item" value="4">Rating</option>
+                                <select className="d-flex px-5 border-bottom dropDown active" value="" onChange={e => setSort(e.target.value)}>
+                                    <option className="dropdown-item" value="" selected disabled>Position</option>
+                                    <option className="dropdown-item" value="A-Z">A-Z</option>
+                                    <option className="dropdown-item" value="asc">Price (Low to High)</option>
+                                    <option className="dropdown-item" value="des">Price (High to Low)</option>
                                 </select>
                                 </div>
                             </div>
@@ -55,7 +57,7 @@ const Product_Component = (props) => {
 
                         <div className="d-flex flex-wrap justify-content-center">
                             
-                        <Product_Card prd={state}/>
+                        <Product_Card prd={state} sort={sort}/>
 
                         </div>
 

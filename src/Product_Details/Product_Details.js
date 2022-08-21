@@ -104,21 +104,21 @@ export default function Product_Details(props) {
                             <div className='Card_Details rounded-5 p-5 shadow-sm'>
 
 
-                                <Slider className='d-flex justify-content-center align-items-center' {...setting}>
-                                    <div className='Image_Card_Details'>
-                                        <img src={prd.img} />
+                                <Slider className='d-flex justify-content-center align-items-center m-auto' {...setting}>
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
-                                    <div className='Image_Card_Details'>
-                                        <img src={prd.img} />
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
-                                    <div className='Image_Card_Details'>
-                                        <img src={prd.img} />
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
-                                    <div className='Image_Card_Details'>
-                                        <img src={prd.img} />
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
-                                    <div className='Image_Card_Details'>
-                                        <img src={prd.img} />
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
                                 </Slider>
 
