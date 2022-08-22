@@ -7,13 +7,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Provider } from 'react-redux';
+import productStore from './store/store';
 // import * as serviceWorker from './serviceWorker';
-import "./localize/i18n";
+import "./localize/i18n"
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={productStore}>
     <App />
- </React.StrictMode>
+  </Provider>
+
+  // </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

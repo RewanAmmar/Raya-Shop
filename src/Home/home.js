@@ -92,7 +92,7 @@ function SamplePrevArrow(props) {
     };
     return (
       <>
-        <div className="container-fluid col-12">
+        <div className="container col-12">
           <div className="row">
             <div className="col-6 ">
               <Carousel>
@@ -147,7 +147,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="	https://rayashop.hypernode.io/media/catalog/category/mobiles-_-tablets.png"
@@ -164,7 +164,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="https://rayashop.hypernode.io/media/catalog/category/tv_home_theater_2x.png"
@@ -181,7 +181,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="	https://rayashop.hypernode.io/media/catalog/category/large_appliances_2x.png"
@@ -196,7 +196,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="	https://rayashop.hypernode.io/media/catalog/category/small_appliances_2x.png"
@@ -211,7 +211,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="https://rayashop.hypernode.io/media/catalog/category/mobiles-_-tablets.png"
@@ -226,7 +226,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="		https://rayashop.hypernode.io/media/catalog/category/kitchen_appliances_2x.png"
@@ -241,7 +241,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="		https://rayashop.hypernode.io/media/catalog/category/electronics_2x_2.png"
@@ -256,7 +256,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="		https://rayashop.hypernode.io/media/catalog/category/computers_2x.png"
@@ -271,7 +271,7 @@ function SamplePrevArrow(props) {
               </a>
               <a
                 href="/deals"
-                className="text_a  rounded-3xs justify-center item relative md:flex flex-1"
+                className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
               >
                 <img
                   src="	https://rayashop.hypernode.io/media/catalog/category/health_and_wellness_2x.png"
@@ -1554,14 +1554,14 @@ function SamplePrevArrow(props) {
           </div>
 
           <div className="mainBrands col-11 ">
-            <a className="text_a  rounded-3xs justify-center item relative md:flex flex-1" href="/deals">
+            <a className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative" href="/deals">
               <img
                 src="https://api-rayashop.freetls.fastly.net/media/brands/165037446574.png?width=200&format=webp"
                 alt=""
                 className="brands"
               />
             </a>
-            <a className="text_a  rounded-3xs justify-center item relative md:flex flex-1" href="/deals">
+            <a className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative" href="/deals">
               <img
                 src="https://api-rayashop.freetls.fastly.net/media/brands/1650460419922.png?width=200&format=webp"
                 alt=""
@@ -1575,28 +1575,28 @@ function SamplePrevArrow(props) {
                 className="brands"
               />
             </a>
-            <a className="text_a  rounded-3xs justify-center item relative md:flex flex-1" href="/deals">
+            <a className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative" href="/deals">
               <img
                 src="	https://api-rayashop.freetls.fastly.net/media/brands/165037610130.png?width=200&format=webp"
                 alt=""
                 className="brands"
               />
             </a>
-            <a className="text_a  rounded-3xs justify-center item relative md:flex flex-1" href="/deals">
+            <a className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative" href="/deals">
               <img
                 src="	https://api-rayashop.freetls.fastly.net/media/brands/1650376649750.png?width=200&format=webp"
                 alt=""
                 className="brands"
               />
             </a>
-            <a className="text_a  rounded-3xs justify-center item relative md:flex flex-1" href="/deals">
+            <a className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative" href="/deals">
               <img
                 src="	https://api-rayashop.freetls.fastly.net/media/brands/1654439018933.png?width=200&format=webp"
                 alt=""
                 className="brands"
               />
             </a>
-            <a className="text_a  rounded-3xs justify-center item relative md:flex flex-1" href="/deals">
+            <a className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative" href="/deals">
               <img
                 src="https://api-rayashop.freetls.fastly.net/media/brands/1650530584800.png?width=200&format=webp"
                 alt=""

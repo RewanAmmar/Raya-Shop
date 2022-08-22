@@ -1,33 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { GrFormAdd } from "react-icons/gr";
 import Slider from "react-slick";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import StarRating from "star-rating-react";
 import mob3 from "../assets/mob3.jpg";
-import { MdCompare,MdOutlineBook } from "react-icons/md";
+import { MdCompare, MdOutlineBook } from "react-icons/md";
 import { FiHeart } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai"
 import { FaRegShareSquare } from "react-icons/fa"
 import { AiOutlineRight } from "react-icons/ai"
 import { GoPlus } from "react-icons/go"
 import { FaMinus } from "react-icons/fa"
-import { BsCart2,BsShieldCheck } from "react-icons/bs"
-import {BsJournalBookmark} from "react-icons/bs"
-import {GrSecure} from "react-icons/gr"
-import {BiStoreAlt} from "react-icons/bi"
+import { BsCart2, BsShieldCheck } from "react-icons/bs"
+import { BsJournalBookmark } from "react-icons/bs"
+import { GrSecure } from "react-icons/gr"
+import { BiStoreAlt } from "react-icons/bi"
 
 import { useTranslation } from "react-i18next";
 
-
-
-const Product_Details= () => {
-
+export default function Product_Details(props) {
     const { t, i18n } = useTranslation();
 
+    const [prd, setPrd] = useState({})
+
+    const [spacification, setSpacification] = useState([])
 
 
 
+    useEffect(() => {
 
+        setPrd(props.location.prdObj)
+
+        setSpacification(props.location.prdObj.specifications)
+
+    }, [prd]);
 
     const settings = {
         className: "slider variable-width",
@@ -102,33 +108,33 @@ const Product_Details= () => {
                             <div className='Card_Details rounded-5 p-5 shadow-sm'>
 
 
-                                <Slider className='d-flex justify-content-center align-items-center' {...setting}>
-                                    <div className='Image_Card_Details'>
-                                        <img src={"https://api-rayashop.freetls.fastly.net/media/catalog/product/cache/4e49ac3a70c0b98a165f3fa6633ffee1/p/z/pzzc96c_thosi2kyms3ihdvn.jpeg?format=webp&width=368"} />
+                                <Slider className='d-flex justify-content-center align-items-center m-auto' {...setting}>
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
-                                    <div className='Image_Card_Details'>
-                                        <img src={"https://api-rayashop.freetls.fastly.net/media/catalog/product/cache/4e49ac3a70c0b98a165f3fa6633ffee1/q/k/qk7n7iz_3vt5fsgzv1p9ta9c.jpeg?format=webp&width=367"} />
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
-                                    <div className='Image_Card_Details'>
-                                        <img src={"https://api-rayashop.freetls.fastly.net/media/catalog/product/cache/4e49ac3a70c0b98a165f3fa6633ffee1/p/z/pzzc96c_thosi2kyms3ihdvn.jpeg?format=webp&width=368"} />
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
-                                    <div className='Image_Card_Details'>
-                                        <img src={"https://api-rayashop.freetls.fastly.net/media/catalog/product/cache/4e49ac3a70c0b98a165f3fa6633ffee1/q/k/qk7n7iz_3vt5fsgzv1p9ta9c.jpeg?format=webp&width=367"} />
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
-                                    <div className='Image_Card_Details'>
-                                        <img src={"https://api-rayashop.freetls.fastly.net/media/catalog/product/cache/4e49ac3a70c0b98a165f3fa6633ffee1/q/k/qk7n7iz_3vt5fsgzv1p9ta9c.jpeg?format=webp&width=367"} />
+                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
+                                        <img src={prd.img} width={"80%"}/>
                                     </div>
                                 </Slider>
 
                             </div>
 
-
+                            
                         </div>
                         <div className='col-lg-6 col-12 m-3'>
                             <div className='col-12 d-flex'>
                                 <div className='col-12 d-flex justify-content-between align-items-center'>
                                     <div className='d-flex'>
-                                        <p className='details_title'>Xiaomi Redmi Note 11s Dual SIM, 128GB, 8GB RAM, 4G, Grey</p>
+                                        <p className='details_title'>{prd.name}</p>
                                     </div>
 
                                     <div className='d-flex'>
@@ -141,8 +147,8 @@ const Product_Details= () => {
                             </div>
                             <div className='col-12 mt-4'>
                                 <div className='d-flex justify-content-between'>
-                                    <span className='product-price'>7000 EGP</span>
-                                    <span className='badge badge_prop d-flex align-items-center px-3'>10% OFF</span>
+                                    <span className='product-price'>{prd.price}</span>
+                                    <span className='badge badge_prop d-flex align-items-center px-3'>{prd.discount}% OFF</span>
                                 </div>
                             </div>
                             <div className='col-12 d-flex align-items-center mt-4 Product_Specifications p-3'>
@@ -169,14 +175,14 @@ const Product_Details= () => {
                             </div>
                             <div className='col-12 mt-4 d-flex'>
                                 <div className='d-flex justify-content-center align-items-center'>
-                                    <div><BsJournalBookmark size={23}/></div>
+                                    <div><BsJournalBookmark size={23} /></div>
                                     <div className='d-flex flex-column mx-3'>
                                         <span className='w-75'>{t("e.label")} </span>
                                         <span className='Product_Specifications_txt'>{t("f.label")} </span>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center'>
-                                    <div><BsJournalBookmark size={23}/></div>
+                                    <div><BsJournalBookmark size={23} /></div>
                                     <div className='d-flex flex-column mx-3'>
                                         <span className='w-75'>{t("g.label")} </span>
                                         <span className='Product_Specifications_txt'>{t("h.label")} </span>
@@ -186,28 +192,28 @@ const Product_Details= () => {
                             <div class="line col-12 mt-2"></div>
                             <div className='col-12 mt-4 d-flex flex-wrap justify-content-evenly'>
                                 <div className='d-flex justify-content-center align-items-center'>
-                                    <div><BsShieldCheck size={30}/></div>
+                                    <div><BsShieldCheck size={30} /></div>
                                     <div className='d-flex flex-column mx-3'>
                                         <span>{t("i.label")} </span>
                                         <span className='Product_Specifications_txt'>{t("k.label")} </span>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center'>
-                                    <div><GrSecure size={30}/></div>
+                                    <div><GrSecure size={30} /></div>
                                     <div className='d-flex flex-column mx-2'>
                                         <span>{t("l.label")} </span>
                                         <span className='Product_Specifications_txt'>{t("m.label")} </span>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center'>
-                                    <div><MdOutlineBook size={30}/></div>
+                                    <div><MdOutlineBook size={30} /></div>
                                     <div className='d-flex flex-column mx-2'>
                                         <span>{t("n.label")} </span>
                                         <span className='Product_Specifications_txt'>{t("o.label")} </span>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center'>
-                                    <div><BiStoreAlt size={30}/></div>
+                                    <div><BiStoreAlt size={30} /></div>
                                     <div className='d-flex flex-column mx-2'>
                                         <span>{t("p.label")} </span>
                                         <span className='Product_Specifications_txt'><a href='#'>{t("q.label")} </a></span>
@@ -256,71 +262,33 @@ const Product_Details= () => {
                             </a>
                             <div className="collapse" id="Specifications">
 
+                                {spacification.map((ele, i) => {
 
-                                <div className='p-3 Product_Specifications_txt rounded-4 Product_Specifications'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Display Type</span><span>Amoled</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Display Size In Inches</span><span>6.4 Inches</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4 Product_Specifications'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Display Resolution In Pixels</span><span>1080 x 2400 pixels</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Touch Screen</span><span>Yes</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4 Product_Specifications'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Processor CPU</span><span>Octa-core</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Processor Chipset</span><span>Mediatek Helio G96</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4 Product_Specifications'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Operating System</span><span>Android</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Operating System Version</span><span>Android 11, MIUI 13</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4 Product_Specifications'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Internal Memory GB</span><span>128 GB</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Memory RAM In GB</span><span>8 GB</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4 Product_Specifications'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Front Camera</span><span>16 MP</span>
-                                    </div>
-                                </div>
-                                <div className='p-3 Product_Specifications_txt rounded-4'>
-                                    <div className='d-flex justify-content-between'>
-                                        <span>Rear Camera</span><span>108 MP + 8 MP + 2 MP + 2 MP</span>
-                                    </div>
-                                </div>
+                                    if (i % 2 == 0) {
+                                        return (
+                                            <div className='p-3 Product_Specifications_txt rounded-4 Product_Specifications'>
+                                                <div className='d-flex justify-content-between'>
+                                                    <span>{ele.name}</span><span>{ele.value}</span>
+                                                </div>
+                                            </div>
+                                        )
+                                    } else {
+                                        return (
+                                            <div className='p-3 Product_Specifications_txt rounded-4'>
+                                                <div className='d-flex justify-content-between'>
+                                                    <span>{ele.name}</span><span>{ele.value}</span>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+
+
+                                })}
+
 
 
                             </div>
-                            <div className="Description_Line"></div>
+                            <div className="Description_Line my-2"></div>
                             {/* -------------------------------------------------------------------------------------------------------------------------------------------- */}
                             <a className="box p-0 m-0" data-bs-toggle="collapse" href="#Refund" role="button" aria-expanded="false" aria-controls="collapseExample">
                                 <div className='d-flex align-items-center justify-content-between'>
@@ -392,7 +360,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -429,7 +397,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -465,7 +433,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -501,7 +469,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -537,7 +505,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -573,7 +541,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -609,7 +577,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -645,7 +613,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -681,7 +649,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -717,7 +685,7 @@ const Product_Details= () => {
                                     </p>
                                     <span className="product-price">7,200 EGP</span>
                                     <div
-                                        
+
                                         class="border border-secondary-200 w-full mt-1 mb-3"
                                     ></div>
                                     <p className="font-body text-sm">
@@ -765,7 +733,7 @@ const Product_Details= () => {
                                 </p>
                                 <span className="product-price">7,200 EGP</span>
                                 <div
-                                    
+
                                     class="border border-secondary-200 w-full mt-1 mb-3"
                                 ></div>
                                 <p className="font-body text-sm">
@@ -801,7 +769,7 @@ const Product_Details= () => {
                                 </p>
                                 <span className="product-price">7,200 EGP</span>
                                 <div
-                                    
+
                                     class="border border-secondary-200 w-full mt-1 mb-3"
                                 ></div>
                                 <p className="font-body text-sm">
@@ -837,7 +805,7 @@ const Product_Details= () => {
                                 </p>
                                 <span className="product-price">7,200 EGP</span>
                                 <div
-                                    
+
                                     class="border border-secondary-200 w-full mt-1 mb-3"
                                 ></div>
                                 <p className="font-body text-sm">
@@ -858,4 +826,3 @@ const Product_Details= () => {
         </>
     )
 }
-export default  Product_Details;
