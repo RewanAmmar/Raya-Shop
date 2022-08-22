@@ -14,8 +14,7 @@ import Footer from './Footer/Footer';
 import { useState } from 'react';
 import Product_Details from './Product_Details/Product_Details';
 import { SearchProvider } from './Shared/Contexts/SearchProvider';
-import { getCategory } from './Shared/Firebase/Products_Functions';
-import { useEffect } from 'react';
+
 
 
 

@@ -2,12 +2,9 @@
   border-radius: 40px;
   cursor: pointer;
 }
-.ProductCard__Thumb{
-  width: 65%;
-}
 .ProductCard__Details {
   border-radius: 30px;
-  margin-top: 1.25rem;
+  margin-top: 1.25rem ;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
@@ -15,6 +12,7 @@
 }
 .text-sm {
   font-size: 0.875rem;
+  height: 4rem;
 }
 .font-body {
   font-family: Roboto, Arial, sans-serif;
@@ -344,4 +342,11 @@ div{
   border-bottom: .1rem solid #5676a5; 
   margin: 10px 0 20px; 
   opacity: .2;
+}
+.badgeDiscount{
+  background-color: #d30000;
+  width: 5rem;
+  height:1.8rem;
+  font-size: 12px !important;
+  border-radius: 12px !important;
 }
