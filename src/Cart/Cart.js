@@ -5,6 +5,10 @@ import Footer from '../Footer/Footer';
 
 
 import SliderShared from './Slider';
+import { useTranslation } from "react-i18next";
+
+ 
+
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -27,7 +31,11 @@ function SampleNextArrow(props) {
       />
     );
   }
-export default function Cart() {
+   const Cart= () => {
+
+      const { t, i18n } = useTranslation();
+  
+
 
     const settings = {
         className: "slider variable-width",
@@ -75,8 +83,8 @@ export default function Cart() {
 
      <div className='cartComponent'>
         <div className='container d-flex flex-column align-items-center'>
-            <h2>MY CART</h2>
-            <p>You have 2 products in your cart</p>
+            <h2>{t("314.label")}</h2>
+            <p>{t("315.label")}</p>
             <div className='d-flex justify-content-between my-5 forResponsCart'>
                 {/* eact product  */}
                 <div className='d-flex flex-column'>
@@ -90,33 +98,33 @@ export default function Cart() {
 
                 <div className='paymentSummary '>
                     <div className='px-4 py-4'>
-                        <h2>Payment Summary</h2>
+                        <h2>{t("316.label")}</h2>
                         <div>
                             <div className=' d-flex  justify-content-between my-2'> 
-                                <span>Subtotal</span>
+                                <span>{t("317.label")}</span>
                                 <span>1000<span> EGP</span></span>
                                 
                             </div>
                             <div className=' d-flex  justify-content-between my-2'> 
-                                <span>Shipping Fees</span>
-                                <span>To be calculated<span> EGP</span></span>
+                                <span>{t("318.label")}</span>
+                                <span>{t("319.label")}<span> EGP</span></span>
                                 
                             </div>
                             <div className=' d-flex  justify-content-between my-2'> 
-                                <span>Shipping Fees</span>
-                                <span>To be calculated<span> EGP</span></span>
+                                <span>{t("320.label")}</span>
+                                <span>{t("321.label")}<span> EGP</span></span>
                                 
                             </div>
                             <div></div>
                             <div className=' d-flex  justify-content-between my-2'> 
-                                <span>Total VAT Included</span>
+                                <span>{t("322.label")}</span>
                                 <span style={{color:"#006CB7",fontSize:"18px",fontWeight:"500"}}>4,428<span> EGP</span></span>
                                 
                             </div>
-                            <div><span> Installments Unavailable </span><p> This order does not qualify for Raya Installments. To use Raya Installments, all items in cart must apply.</p></div>
-                            <button className='btn text-white '>Pay With Raya Installments</button>
+                            <div><span> {t("323.label")} </span><p>{t("324.label")}</p></div>
+                            <button className='btn text-white '>{t("325.label")}</button>
                             <div></div>
-                            <button className='btn'>Proceed To Checkout</button>
+                            <button className='btn'>{t("327.label")}</button>
                             <div className='d-flex justify-content-around'>
                                 <img src={"https://www.pngall.com/wp-content/uploads/2017/05/Visa-Logo-PNG-Pic.png"}/>
                                 <img src={"https://www.pngitem.com/pimgs/m/1-17788_mastercard-logo-transparent-vector-logo-png-mastercard-png.png"}/>
@@ -140,3 +148,4 @@ export default function Cart() {
     </>
   )
 }
+export default Cart;

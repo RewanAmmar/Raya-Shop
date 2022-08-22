@@ -2,9 +2,17 @@ import React from 'react'
 import './cart.css'
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs';
+import { useTranslation } from "react-i18next";
 
 
-export default function EachProduct(props) {
+  const EachProduct= (props) => {
+
+      const { t, i18n } = useTranslation();
+  
+
+
+
+    
   return (<>
   
     <div className='eachProduct d-flex px-3 py-3 bs-4 shadow mx-5'>
@@ -29,13 +37,14 @@ export default function EachProduct(props) {
 <div className='installment-plans-section'>
     <div className='row'>
         <div className='col col-lg-8'>
-            <p>Or Pay with Raya Installments starting From{`${parseInt(props.cost/6)}`} / 6 Months with Raya Installments</p>
+            <p>{t("364.label")}{`${parseInt(props.cost/6)}`}{t("366.label")} </p>
         </div>
         <div className='col col-lg-4'>
-            <a href='#'>More payment methods</a>
+            <a href='#'>{t("365.label")}</a>
         </div>
     </div>
 </div>
 </>
   )
 }
+export default EachProduct;

@@ -141,6 +141,12 @@ color: #006CB7;
 .link{
     text-align: right;
 }
+.footerRegister{
+    height:50px;
+    padding-top: 20px;
+    text-align: center;
+
+}
 .footerRegister p{
     font-size: 14px;
     color: #001C46;

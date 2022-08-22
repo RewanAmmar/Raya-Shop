@@ -114,4 +114,6 @@ export const getchildbadge = async (subCategory) => {
 //         Video_Recording: "Dual-LED dual-tone flash, HDR (photo/panorama)",
 //         Weight_In_Gram: 134,
 //         WiFi: true
+
+// }
 // }

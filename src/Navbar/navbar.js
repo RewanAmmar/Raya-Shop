@@ -13,13 +13,15 @@ import { TbBuildingStore } from "react-icons/tb";
 import { TbWorld } from "react-icons/tb";
 import { CgCloseR } from "react-icons/cg";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { Link } from 'react-router-dom';
+import i18n from "i18next";
+//     i18n.changeLanguage(event.target.value);
 import { getallchildcategory, getallmaincategory, getallsubcategory, getCategory, getchildbadge } from "../Shared/Firebase/Products_Functions";
 import { useSelector, useDispatch } from 'react-redux';
 import productComData from './../store/actions/productComData';
 import { search } from './../Shared/Contexts/SearchProvider';
-
-
+//   };
 
 export default function Navbar() {
 
@@ -295,168 +297,7 @@ export default function Navbar() {
                 )
               })}
 
-              {/* <div class="subnav">
-                <Link to="/Televisions"><button class="subnavbtn">Television </button></Link>
-                <div class="subnav-content">
-                  <div className='row d-flex gx-0'>
-                    <div className='row'>
-                      <div className='col-md-8 '>
-                        <a className=" subnava" href="#bring"><h4 className='maiin ms-4'>TVs</h4>
-                          <ul className='sub2nav ms-4'>
-                            <li className='sub2navli'>Samsung TV</li>
-                            <li className='sub2navli'>LG</li>
-                            <li className='sub2navli'>Toshiba TV</li>
-                            <li className='sub2navli'>Sony TV</li>
-                            <li className='sub2navli'>SARY TV</li>
-                          </ul>
-                        </a>
-                        <a className=" subnava" href="#deliver"><h4 className='maiin'>TV Accessories</h4></a>
-                        <a className=" subnava" href="#package"><h4 className='maiin ps-3'>Receivers</h4></a>
-                        <a className=" subnava" href="#express"><h4 className='maiin ps-3'>Home Theaters</h4></a>
-                      </div>
-                      <div className='col-md-4'>
-                        <div className='tvtext'>
-                          <h5 className='deal'>Great Deals</h5>
-                          <p className='sale'>Save up to 30% off and Enjoy best TV<br /> offers and qualities</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='row d-flex'>
-                      <div className='col-md-6'>
-                        <img className='ps-2' src={require("../assets/lg.webp")} />
-                        <img className='ps-2' src={require("../assets/tor.webp")} />
-                        <img className='ps-2' src={require("../assets/toa.webp")} />
-                        <img className='ps-2' src={require("../assets/sam.webp")} />
-
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <a className='text-primary-500 font-bold flex items-center mt-2 nuxt-link-exact-active nuxt-link-active text-decoration-none'>
-                      <span className='w-12 h-12 rounded-xl mr-5 bg-primary-500 p-4 icon sprite-icons'><BsFillArrowRightSquareFill color='blue' size={50} /></span>
-                      <span className='foottxt'> Shop All TVS</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="subnav">
-                <button class="subnavbtn">Large Appliances</button>
-                <div class="subnav-content">
-                  <div className='row d-flex gx-0'>
-                    <div className='row'>
-                      <div className='col-8  ps-5'>
-                        <a className=" subnava" href="#link1"><h4 className='maiin'>Air Conditioners</h4>
-                          <ul className='sub2nav mx-4'>
-                            <li className='sub2navli'>Unionaire Air Conditioner</li>
-                            <li className='sub2navli'>Carrier Air Conditioner</li>
-                            <li className='sub2navli'> LG Air Conditioner</li>
-                            <li className='sub2navli'> Midea Air Conditioner</li>
-                          </ul></a>
-
-                        <a className=" subnava" href="#link2"><h4 className='maiin'>Cookers</h4>
-                          <ul className='sub2nav '>
-                            <li className='sub2navli'> Fresh Cookers</li>
-                            <li className='sub2navli'> La Germania Cookers</li>
-                            <li className='sub2navli'> UnionAire Cookers</li>
-                            <li className='sub2navli'>Zanussi Cookers</li>
-                          </ul>
-                        </a>
-                        <a className=" subnava" href="#link3"><h4 className='maiin'>Freezers</h4>
-                          <ul className='sub2nav '>
-                            <li className='sub2navli'>Beko Freezers</li>
-                            <li className='sub2navli'>W.Alaska Freezers</li>
-                            <li className='sub2navli'> Fresh Freezers</li>
-                            <li className='sub2navli'>Toshiba Freezers</li>
-                          </ul>
-                        </a>
-                        <a className=" subnava" href="#link4"><h4 className='maiin'>Washing Machines</h4>
-                          <ul className='sub2nav '>
-                            <li className='sub2navli'>Zanussi washing Machines</li>
-                            <li className='sub2navli'> Fresh washing Machines</li>
-                            <li className='sub2navli'> Toshiba washing Machines</li>
-                            <li className='sub2navli'>LG washing Machines</li>
-                          </ul>
-                        </a>
-                      </div>
-                      <div className='col-4'>
-                        <div className='largetext'>
-                          <h5 className='deal'>Great Deals</h5>
-                          <p className='sale'>Enjoy Installment up to 36 months</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <a className='text-primary-500 font-bold flex items-center mt-2 nuxt-link-exact-active nuxt-link-active text-decoration-none'>
-                        <span className='w-12 h-12 rounded-xl mr-5 bg-primary-500 p-4 icon sprite-icons'><BsFillArrowRightSquareFill color='blue' size={50} /></span>
-                        <span className='foottxt'> Shop All Large Appliances</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="subnav">
-                <button class="subnavbtn">Small Appliances</button>
-                <div class="subnav-content">
-                  <div className='row d-flex gx-0'>
-                    <div className='row'>
-                      <div className='col-8 ps-5'>
-                        <a className=" subnava" href="#link1"><h4 className='maiin'>Vacuum Cleaners</h4>
-                          <ul className='sub2nav mx-4'>
-                            <li className='sub2navli'> Carpet Vacuum Cleaners</li>
-                            <li className='sub2navli'>Drum Vacuum Cleaners</li>
-                            <li className='sub2navli'>Handheld Vacuum Cleaners</li>
-                            <li className='sub2navli'>Steam Vacuum Cleaners</li>
-                            <li className='sub2navli'> Stick Vacuum Cleaners</li>
-
-                          </ul></a>
-                        <a className=" subnava" href="#link2"><h4 className='maiin'>Irons</h4>
-                          <ul className='sub2nav '>
-                            <li className='sub2navli'> Garment Steamers</li>
-                            <li className='sub2navli'> Steam Generator</li>
-                            <li className='sub2navli'>Dry Irons</li>
-                          </ul>
-                        </a>
-                        <a className=" subnava" href="#link3"><h4 className='maiin'>Scales</h4>
-                          <ul className='sub2nav '>
-                            <li className='sub2navli'> Mechanical Kitchen Scale</li>
-                            <li className='sub2navli'>Body Scale </li>
-                          </ul>
-                        </a>
-
-                        <a className=" subnava" href="#link6"><h4 className='maiin'>Heaters </h4>
-                          <ul className='sub2nav'>
-                            <li className='sub2navli'> Radiant Heaters</li>
-                            <li className='sub2navli'> Ceramic Heaters</li>
-                            <li className='sub2navli'>Quartz Heaters</li>
-
-                          </ul>
-                        </a>
-
-                      </div>
-                      <div className='col-4'>
-                        <div className='smalltext'>
-                          <h5 className='deal'>Great Deals</h5>
-                          <p className='sale'>Expect to see exclusive Offers with<br /> up to 36 monthly installment</p>
-
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <a className='text-primary-500 font-bold flex items-center mt-2 nuxt-link-exact-active nuxt-link-active text-decoration-none'>
-                        <span className='w-12 h-12 rounded-xl mr-5 bg-primary-500 p-4 icon sprite-icons'><BsFillArrowRightSquareFill color='blue' size={50} /></span>
-                        <span className='foottxt'> Shop All Small Appliances</span>
-                      </a></div>
-                  </div>
-                </div>
-              </div> */}
-              {/* 
-              <a className='nava' href="#home"> Kitchen Applicances</a>
-              <a className='nava' href="#home">  Electronics</a>
-              <a className='nava' href="#home"> Labtop&PCS</a>
-              <a className='nava' href="#home"> Health&Beauty</a>
-              <a className='nava' href="#home"> Vehicles</a> */}
-
+              
 
 
             </div>
@@ -713,4 +554,5 @@ export default function Navbar() {
 
 
 }
+
 

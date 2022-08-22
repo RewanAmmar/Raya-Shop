@@ -3,17 +3,23 @@ import './Account_Overview.css';
 import { FiEdit } from "react-icons/fi";
 import {BsFillArrowRightSquareFill} from "react-icons/bs"
 
+import { useTranslation } from "react-i18next";
+
+  const Account_Overview= () => {
+
+      const { t, i18n } = useTranslation();
+  
 
 
-export default function Account_Overview() {
+
   return (
     <>
    
      
           
-            <p className="account_h1 p-2">ACCOUNT OVERVIEW</p>
+            <p className="account_h1 p-2">{t("328.label")}</p>
             <div className="account_details">
-            <h4 className="text_h4">presonal Details</h4>
+            <h4 className="text_h4">{t("329.label")}</h4>
             <div class="row g-3 pt-3 account_form">
               <div class="col">
                 <input
@@ -42,23 +48,21 @@ export default function Account_Overview() {
             </div>
             <div className="d-inline-flex edit_text">
             <FiEdit size={25} className="filledit" />
-            <a href="#" className="">Edit Account </a>
+            <a href="#" className="">{t("330.label")} </a>
             </div>
             </div>
 
             <div>
 
-            <h5 className="p-3 m-1 text_hh5">Latest Order</h5>
+            <h5 className="p-3 m-1 text_hh5">{t("331.label")}</h5>
             <p className="account_parag">
-              You haven’t ordered any products from Raya yet, browse products
-              now, checkout in a few steps<br/> and have your orders saved in your
-              profile
+            {t("332.label")}
             </p>
              
             
              <div className="pt-5 account_arrow">
                 <BsFillArrowRightSquareFill className="arrow" size={40} />
-                <a href="#" className="text-browse"> Browse Products</a>
+                <a href="#" className="text-browse">{t("333.label")}</a>
                 </div>
              
               
@@ -69,3 +73,4 @@ export default function Account_Overview() {
     </>
   );
 }
+export default Account_Overview;

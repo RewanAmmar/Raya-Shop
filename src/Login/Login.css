@@ -108,6 +108,9 @@ margin-top: 8px;
     text-align: right;
 }
 .footerLogin {
+    height:50px;
+    padding-top: 20px;
+    text-align: center;
 
 }
 .footerLogin p{

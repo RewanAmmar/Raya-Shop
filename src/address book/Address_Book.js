@@ -17,18 +17,22 @@ import { ImEarth } from "react-icons/im";
 import { GoLocation } from "react-icons/go";
 import { GiDirectionSign, GiStairs } from "react-icons/gi";
 import './Address_Book.css'
+import { useTranslation } from "react-i18next";
 
-export default function Address_Book() {
+const Address_Book= () => {
+
+    const { t, i18n } = useTranslation();
+
   return (
     <>
       <IoIosArrowBack size={20} />
       <a href="#" className=" address_a">
-        Back To My Address Book
+      {t("352.label")}
       </a>
 
-      <p className="account_h1 p-2 d-block">ADD NEW ADDRESS</p>
+      <p className="account_h1 p-2 d-block">{t("344.label")}</p>
 
-      <p className="address_p ">New Address Details</p>
+      <p className="address_p ">{t("345.label")}</p>
 
       <form className="mt-5">
         <div class="input-group-lg">
@@ -39,11 +43,11 @@ export default function Address_Book() {
             type="email"
             className="form-control"
             aria-describedby="emailHelp"
-            placeholder="Full Name"
+            placeholder={t("353.label")}
             required
           />
            <label className="account_label">
-            <span className="span">Full Name</span>
+            <span className="span">{t("353.label")}</span>
             <span className="span">*</span>
           </label>
         </div>
@@ -54,11 +58,11 @@ export default function Address_Book() {
             id="address_form"
             type="password"
             class="form-control "
-            placeholder="Phone Number "
+            placeholder={t("354.label")}
             required
           />
           <label className="account_label">
-            <span className="span">Phone Number</span>
+            <span className="span">{t("354.label")}</span>
             <span className="span">*</span>
           </label>
         </div>
@@ -69,17 +73,14 @@ export default function Address_Book() {
               id="address_form"
               type="Number"
               class="form-control"
-              placeholder="Select Governorate "
+              placeholder={t("346.label")}
               aria-label="First name"
               required
             />
             <label className="account_label">
-              <span className="span">Governorate</span>
+              <span className="span">{t("355.label")}</span>
               <span className="span">*</span>
             </label>
-            {/* <span className="icon">
-              <IoIosArrowDown size={23} />
-            </span> */}
           </div>
           <div class="col input-group-lg">
             <GoLocation size={20} className="icon" />
@@ -88,12 +89,12 @@ export default function Address_Book() {
               id="address_form"
               type="text"
               class="form-control"
-              placeholder="Select Area"
+              placeholder={t("347.label")}
               aria-label="Last name"
               required
             />
             <label className="account_label">
-              <span className="span">Area</span>
+              <span className="span">{t("356.label")}</span>
               <span className="span">*</span>
             </label>
           </div>
@@ -104,11 +105,11 @@ export default function Address_Book() {
             id="address_form"
             type="password"
             class="form-control"
-            placeholder="Street"
+            placeholder={t("348.label")}
             required
           />
           <label className="account_label">
-            <span className="span">Street</span>
+            <span className="span">{t("348.label")}</span>
             <span className="span">*</span>
           </label>
         </div>
@@ -119,12 +120,12 @@ export default function Address_Book() {
               id="address_form"
               type="text"
               class="form-control"
-              placeholder="Example:22"
+              placeholder={t("358.label")}
               aria-label="First name"
               required
             />
             <label className="account_label">
-              <span className="span">Building Number</span>
+              <span className="span">{t("357.label")}</span>
               <span className="span">*</span>
             </label>
           </div>
@@ -134,12 +135,12 @@ export default function Address_Book() {
               id="address_form"
               type="text"
               class="form-control"
-              placeholder="Example:1"
+              placeholder={t("359.label")}
               aria-label="Last name"
               required
             />
             <label className="account_label">
-              <span className="span">Floor</span>
+              <span className="span">{t("361.label")}</span>
             </label>
           </div>
           <div class="col input-group-lg">
@@ -148,12 +149,12 @@ export default function Address_Book() {
               id="address_form"
               type="text"
               class="form-control"
-              placeholder="Example:1"
+              placeholder={t("359.label")}
               aria-label="Last name"
               required
             />
             <label className="account_label">
-              <span className="span">Apartment</span>
+              <span className="span">{t("362.label")}</span>
             </label>
           </div>
         </div>
@@ -163,29 +164,30 @@ export default function Address_Book() {
             id="address_form"
             type="password"
             class="form-control"
-            placeholder="Example:Home Address, Work Address"
+            placeholder={t("360.label")}
             required
           />
           <label className="account_label">
-            <span className="span">Address Name</span>
+            <span className="span">{t("363.label")}</span>
             <span className="span">*</span>
           </label>
         </div>
         <div class="mb-3 mt-5 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1" />
           <label class="form-check-label" for="exampleCheck1">
-            Set Default Address
+          {t("349.label")}
           </label>
         </div>
         <div className="items-center col-md d-flex mt-15">
           <a href="#" class=" address_button">
-            Save Address
+          {t("350.label")}
           </a>
           <a href="#" className="address_buttonn">
-            Cancel
+          {t("351.label")}
           </a>
         </div>
       </form>
     </>
   );
 }
+export default  Address_Book;

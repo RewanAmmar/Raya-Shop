@@ -17,7 +17,13 @@ import StarRating from "star-rating-react";
 import Carousel from "react-bootstrap/Carousel";
 import cool from "../assets/cool.webp";
 import './home.css'
+import { useTranslation } from "react-i18next";
 
+
+
+
+
+   
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -42,8 +48,9 @@ function SamplePrevArrow(props) {
 }
 
 
-export default class Home extends React.Component {
-  render() {
+ const Home = () => {
+ const{ t, i18n } = useTranslation();
+
     const settings = {
       className: "slider variable-width",
       // dots: true,
@@ -122,6 +129,10 @@ export default class Home extends React.Component {
           <div className="sectionIcon w-100 h-100 flex-wrap justify-between row">
             <section className=" container mx-auto w-full d-flex justify-content-evenly">
 
+                <div className="sectionParag ">
+                  <p className="sectionText text-danger">Hot Deals</p>
+                </div>
+              
               <a
                 href="/deals"
                 className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
@@ -134,7 +145,9 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Mobiles & Tablets</p>
+                  <p className="sectionText ">
+                    {t("383.label")}
+                    </p>
                 </div>
               </a>
               <a
@@ -149,7 +162,9 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Televisions</p>
+                  <p className="sectionText ">
+                    {t("385.label")}
+                    </p>
                 </div>
               </a>
               <a
@@ -164,7 +179,7 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Large Appliances</p>
+                  <p className="sectionText ">   {t("387.label")}</p>
                 </div>
               </a>
               <a
@@ -179,7 +194,7 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Small Appliances</p>
+                  <p className="sectionText ">   {t("388.label")}</p>
                 </div>
               </a>
               <a
@@ -194,7 +209,7 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Summer Offers</p>
+                  <p className="sectionText ">   {t("500.label")}</p>
                 </div>
               </a>
               <a
@@ -209,7 +224,7 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Kitchen Appliances</p>
+                  <p className="sectionText ">   {t("389.label")}</p>
                 </div>
               </a>
               <a
@@ -224,7 +239,7 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Electronics</p>
+                  <p className="sectionText ">   {t("390.label")}</p>
                 </div>
               </a>
               <a
@@ -239,7 +254,7 @@ export default class Home extends React.Component {
                 />
 
                 <div className="sectionParag ">
-                  <p className="sectionText ">Laptops & PCs</p>
+                  <p className="sectionText ">   {t("391.label")}</p>
                 </div>
               </a>
               <a
@@ -254,13 +269,13 @@ export default class Home extends React.Component {
                 />
                   
                 <div className="sectionParag ">
-                  <p className="sectionText ">Health & Beauty</p>
+                  <p className="sectionText ">   {t("501.label")}</p>
                 </div>
               </a>
             </section>
           </div>
           
-          <h1 className="text_h1">OUR TOP OFFERS</h1>
+          <h1 className="text_h1">{t("368.label")}</h1>
           
 
           <Slider className="slick-list col-10" {...settings}>
@@ -298,7 +313,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -335,7 +350,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -371,7 +386,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -407,7 +422,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -443,7 +458,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -479,7 +494,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -515,7 +530,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -551,7 +566,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -587,7 +602,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -623,7 +638,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -632,7 +647,7 @@ export default class Home extends React.Component {
         
           <div className="explore">
             <button className=" exploreButton btn btn-primary">
-              <h5 className="text_h5">Explore Offers</h5>
+              <h5 className="text_h5">{t("369.label")}</h5>
             </button>
           </div>       
 
@@ -641,7 +656,7 @@ export default class Home extends React.Component {
             <img className="cooll" src={cool} alt="" />
           </div>
 
-          <h1 className="text_h1">BEST SELLERS</h1>
+          <h1 className="text_h1">{t("376.label")}</h1>
           <Slider className="slick-list col-10" {...settings}>
           <div
               className="slick-slide ProductCard flex-grow-1 d-flex flex-column shadow bg-white mx-3 my-2 position-relative"
@@ -675,7 +690,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -711,7 +726,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -747,7 +762,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -783,7 +798,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -819,7 +834,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -855,7 +870,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -891,7 +906,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -927,7 +942,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -963,7 +978,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -999,7 +1014,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1035,7 +1050,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1071,7 +1086,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1107,7 +1122,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1143,14 +1158,14 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
           </Slider>
 
           <div>
-            <h1 className="text_h1">SAMSUNG OFFERS</h1>
+            <h1 className="text_h1"> {t("377.label")}</h1>
           </div>
           <Slider className="slick-list col-10" {...settings}>
           <div
@@ -1185,7 +1200,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1221,7 +1236,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1257,7 +1272,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1293,7 +1308,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1329,7 +1344,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1365,7 +1380,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1401,7 +1416,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1437,7 +1452,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1473,7 +1488,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1509,7 +1524,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1518,12 +1533,12 @@ export default class Home extends React.Component {
          
           <div className="col-10  md-4 col-lg-2 w-100 explore">
             <button className=" exploreButton btn btn-primary ">
-              <h5 className="text_h5">Explore Samsung Products</h5>
+              <h5 className="text_h5"> {t("378.label")}</h5>
             </button>
           </div>
         
           <div>
-            <h1 className="text_h1">FEATURED BRANDS</h1>
+            <h1 className="text_h1"> {t("379.label")}</h1>
           </div>
 
           <div className="mainBrands col-11 ">
@@ -1581,7 +1596,7 @@ export default class Home extends React.Component {
           <div className="downloadImg">
             <img className="_img" src={download1} alt="" />
           </div>
-          <h1 className="text_h1">SUMMER OFFERS</h1>
+          <h1 className="text_h1"> {t("500.label")}</h1>
           <Slider className="slick-list col-10" {...settings}>
           <div
               className="slick-slide ProductCard flex-grow-1 d-flex flex-column shadow bg-white mx-3 my-2 position-relative"
@@ -1615,7 +1630,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1651,7 +1666,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1687,7 +1702,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1723,7 +1738,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1759,7 +1774,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1795,7 +1810,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1831,7 +1846,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1867,7 +1882,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1903,7 +1918,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1939,7 +1954,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -1975,7 +1990,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -2011,7 +2026,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -2047,7 +2062,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -2083,7 +2098,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -2119,7 +2134,7 @@ export default class Home extends React.Component {
                 </p>
                 <button type="button" class="compareButton p-3 text-sm mb-2">
                   <MdCompare className="mx-3" size={18} />
-                  Compare
+                  {t("367.label")}
                 </button>
               </div>
             </div>
@@ -2128,12 +2143,13 @@ export default class Home extends React.Component {
          
           <div className="explore  md-4 col-lg-2 w-100">
             <button className=" exploreButton btn btn-primary text-bold">
-              <h5 className="text_h5">Explore All Summer Offers</h5>
+              <h5 className="text_h5"> {t("381.label")}</h5>
             </button>
           </div>
          
         </div>
       </>
     );
-  }
-}
+  
+ }
+  export default  Home ;

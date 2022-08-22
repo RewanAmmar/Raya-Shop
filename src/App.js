@@ -11,14 +11,21 @@ import Cart from './Cart/Cart';
 import PayInstallment from './PayInstallment/PayInstallment';
 import StoreLocator from './StoreLocator/StoreLocator';
 import Footer from './Footer/Footer';
-import { useState } from 'react';
 import Product_Details from './Product_Details/Product_Details';
 import { SearchProvider } from './Shared/Contexts/SearchProvider';
-
-
+import { getCategory } from './Shared/Firebase/Products_Functions';
+import { useEffect } from 'react';
+import React, { Component, Suspense ,useEffect , useState} from "react";
+import cookie from "js-cookie";
+import "./App.css";
+import "./localize/i18n";
+// import Introduction from './localize/Introduction';
+import Advantages from "./localize/Advantages"
+import LanguageSelector from "./localize/LanguageSelector";
 
 
 function App() {
+
 
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -44,6 +51,7 @@ function App() {
           </Switch>
           <Footer />
         </SearchProvider>
+
       </Router>
 
 
@@ -54,3 +62,6 @@ function App() {
 }
 
 export default App;
+
+
+ 
