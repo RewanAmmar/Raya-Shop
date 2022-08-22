@@ -18,17 +18,18 @@ import React, { Component, Suspense ,useEffect , useState} from "react";
 import cookie from "js-cookie";
 import "./App.css";
 import "./localize/i18n";
-// import Introduction from './localize/Introduction';
 import Advantages from "./localize/Advantages"
-import LanguageSelector from "./localize/LanguageSelector";
+import Compare from "./Compare/compare"
 
-
+import { useSelector } from 'react-redux';
+import LanguageSelector from "./localize/LanguageSelector"
+import { changeLanguage } from 'i18next';
 
 
 function App() {
 
 
-  const [searchQuery, setSearchQuery] = useState("")
+const [searchQuery, setSearchQuery] = useState("")
 
 
   return (
@@ -36,14 +37,18 @@ function App() {
     <div>
     <Suspense fallback={null}>
 
-<LanguageSelector />
-{/* <Introduction /> */}
 
+{/* <Introduction /> */}
+ <LanguageSelector />
 <Advantages />
 </Suspense>
       <Router>
         <SearchProvider value={{ searchQuery, setSearchQuery }}>
+        
+            <div >
           <Navbar />
+          {/* <Compare/> */}
+        
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/Home' exact component={Home} />
@@ -56,8 +61,10 @@ function App() {
             <Route path='/payInstallment' exact component={PayInstallment} />
             <Route path='/storeLocator' exact component={StoreLocator} />
           </Switch>
-          <Footer />
-        </SearchProvider>
+          {/* <Footer /> */}
+          </div>
+     
+       </SearchProvider>
 
       </Router>
 
