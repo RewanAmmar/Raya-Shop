@@ -5,6 +5,7 @@ import Component_Header from '../Shared/Component_Header/Component_Header';
 import { useSelector } from 'react-redux';
 
 
+
 export default function Layout() {
 
 
@@ -34,8 +35,6 @@ export default function Layout() {
             <div className='container-fulid'>
                 <div className='row p-0 m-0'>
                     <div className='d-flex flex-column'>
-                        
-
                         <div>
                             <Component_Header subCategory={headerBadges} header={headerName} />
                         </div>

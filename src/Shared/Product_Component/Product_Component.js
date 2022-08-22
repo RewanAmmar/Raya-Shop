@@ -29,12 +29,12 @@ const Product_Component = (props) => {
 
     return (<>
 
-        <div className="mx-3">
-            <div className="container-fluid">
+        <div className="mx-2">
+            <div className="container-fluid px-0 mx-0">
 
                 <div className="row d-flex flex-column flex-grow-1">
 
-                    <div className="col-12">
+                    <div className="col-12 px-0 mx-0">
 
 
                     <div className="col-12 py-5">
@@ -55,7 +55,7 @@ const Product_Component = (props) => {
                         </div>
 
 
-                        <div className="d-flex flex-wrap justify-content-center">
+                        <div className="d-flex flex-wrap">
                             
                         <Product_Card prd={state} sort={sort}/>
 

@@ -247,7 +247,7 @@ export default function Navbar() {
               {mainCategory.map(ele => {
                 return (
                   <div className="subnav" >
-                    <Link to="/Mobiles&Tablets" key={ele.main_category} onClick={() => main(ele)} onMouseOver={() => getMainCat(ele)} ><button class="subnavbtn">{ele.main_category}</button></Link>
+                    <Link to={(ele.main_category).replace(/\s/g, '')} key={ele.main_id} onClick={() => main(ele)} onMouseOver={() => getMainCat(ele)} ><button class="subnavbtn">{ele.main_category}</button></Link>
 
                     <div className=" subnav-content">
                       <div className='row d-flex  gx-0  '>

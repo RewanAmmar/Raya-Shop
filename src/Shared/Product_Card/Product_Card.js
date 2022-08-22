@@ -47,8 +47,8 @@ const Product_Card = (props) => {
 
             return (
                 <Link to={{ pathname: `/Details/${prd.prd_id}`, prdObj: prd }} style={{ textDecoration: 'none', color: 'black' }}>
-                <div key={prd.prd_id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-2 my-2 position-relative" style={{ width: "14rem" }}>
-                   {prd.discount > 0 ? <div className='badge badgeDiscount d-flex justify-content-center align-items-center mt-4 ms-3'>{prd.discount}% OFF</div>
+                <div key={prd.prd_id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-1 my-2 position-relative" style={{ width: "13.1rem" }}>
+                   {prd.discount > 0 ? <div className='badge badgeDiscount ms-3 position-absolute d-flex justify-content-center align-items-center mt-4 '>{prd.discount}% OFF</div>
                    : <div></div>
                    } 
                     <div className="d-flex position-absolute heart">
@@ -61,8 +61,21 @@ const Product_Card = (props) => {
                         <div>
                             <StarRating size={5} value={0} disable />
                         </div>
-                        <p className="font-body text-sm">{prd.name}</p>
-                        <span className="product-price">{prd.price}</span>
+                        <p className="font-body text-sm textcarddec" >{prd.name}</p>
+                        
+                            {prd.discount <= 0 || prd.discount == null?
+                             <div className='d-flex align-items-center'>
+                             <span className="product-price">{prd.price}</span>
+                             </div>
+                            :
+                            <div className='d-flex align-items-center'>
+                            <span className="product-price">{(prd.price * (100 - prd.discount)) / 100}</span>
+                            <span className='ms-3 text-decoration-line-through'>{prd.price}</span>
+                            </div>
+                           
+                        }
+                        
+                       
                         <div class="border border-secondary-200 w-full mt-1 mb-3"></div>
                         <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
                         <button type="button" class="compareButton p-3 text-sm mb-2">

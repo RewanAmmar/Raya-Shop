@@ -14,9 +14,7 @@ import Footer from './Footer/Footer';
 import Product_Details from './Product_Details/Product_Details';
 import { SearchProvider } from './Shared/Contexts/SearchProvider';
 import { getCategory } from './Shared/Firebase/Products_Functions';
-import { useEffect } from 'react';
 import React, { Component, Suspense ,useEffect , useState} from "react";
-import cookie from "js-cookie";
 import "./App.css";
 import "./localize/i18n";
 // import Introduction from './localize/Introduction';
@@ -41,7 +39,14 @@ function App() {
             <Route path='/' exact component={Home} />
             <Route path='/Home' exact component={Home} />
             <Route path='/Mobiles&Tablets' exact component={Layout} />
+            <Route path='/KitchenAppliances' exact component={Layout} />
+            <Route path='/LargeAppliances' exact component={Layout} />
+            <Route path='/Health&Beauty' exact component={Layout} />
+            <Route path='/SmallAppliances' exact component={Layout} />
             <Route path='/Televisions' exact component={Layout} />
+            <Route path='/Electronics' exact component={Layout} />
+            <Route path='/Laptops&PCs' exact component={Layout} />
+            <Route path='/Vehicles' exact component={Layout} />
             <Route path='/Details/:prdId' exact component={Product_Details} />
             <Route path='/login' exact component={Login} />
             <Route path='/register' exact component={Register} />
