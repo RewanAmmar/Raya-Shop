@@ -19,6 +19,7 @@ import cool from "../assets/cool.webp";
 import './home.css'
 import { getallchildcategory, getallmaincategory, getallsubcategory, getCategory } from "../Shared/Firebase/Products_Functions";
 import Product_Card from "../Shared/Product_Card/Product_Card";
+import { Link } from "react-router-dom";
 
 
 function SampleNextArrow(props) {
@@ -315,6 +316,7 @@ export default function Home () {
             {/* <div className="d-flex flex-wrap">           */}
         {prds.filter(x => x.discount > 17 && x.discount != 0).map(ele =>{
           return (
+            <Link to={{ pathname: `/Details/${ele.prd_id}`, prdObj: ele }} style={{ textDecoration: 'none', color: 'black' }}>
             <div key={ele.id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-1 my-2 position-relative" style={{ width: "14rem" }}>
                    {ele.discount > 0 ? <div className='badge badgeDiscount ms-3 position-absolute d-flex justify-content-center align-items-center mt-4 '>{ele.discount}% OFF</div>
                    : <div></div>
@@ -352,6 +354,7 @@ export default function Home () {
                         </button>
                     </div>
                 </div>
+                </Link>
           )
         })}
            
@@ -375,6 +378,7 @@ export default function Home () {
             {/* <div className="d-flex flex-wrap">           */}
         {prds.map(ele =>{
           return (
+            <Link to={{ pathname: `/Details/${ele.prd_id}`, prdObj: ele }} style={{ textDecoration: 'none', color: 'black' }}>
             <div key={ele.id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-1 my-2 position-relative" style={{ width: "14rem" }}>
                    {ele.discount > 0 ? <div className='badge badgeDiscount ms-3 position-absolute d-flex justify-content-center align-items-center mt-4 '>{ele.discount}% OFF</div>
                    : <div></div>
@@ -412,6 +416,7 @@ export default function Home () {
                         </button>
                     </div>
                 </div>
+                </Link>
           )
         })}
            

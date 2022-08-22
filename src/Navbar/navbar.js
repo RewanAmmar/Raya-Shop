@@ -253,11 +253,6 @@ const changeLanguage = (e) => {
           <div className='secnav align-items-center'>
             <div class="navbarr d-flex justify-content-center align-items-center">
 
-              <a className='nava' href="#home">
-                <span className='hot'>
-                  <img className='off' src={require("../assets/offer.webp")} />
-                  HotDeals</span>
-              </a>
               {mainCategory.map(ele => {
                 return (
                   <div className="subnav" >
@@ -269,7 +264,7 @@ const changeLanguage = (e) => {
                           <div className='col-8 ps-5 '>
                             {subCategory.map(ele => {
                               return (
-                                <a className=" subnava" href="#bring" ><h4 className='maiin ms-4' key={ele.sub_category} onClick={() => sub(ele)}>{ele.sub_category}</h4>
+                               <a className=" subnava" href="#bring" ><h4 className='maiin ms-4' key={ele.sub_category} onClick={() => sub(ele)}>{ele.sub_category}</h4>
                                   <ul className='sub2nav ms-4'>
                                     {childCategory.filter(x => x.sub_category == ele.sub_category).map(ele => {
                                       // console.log(childCategory)
