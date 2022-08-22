@@ -20,10 +20,8 @@ import "./App.css";
 import "./localize/i18n";
 import Advantages from "./localize/Advantages"
 import Compare from "./Compare/compare"
-
-import { useSelector } from 'react-redux';
 import LanguageSelector from "./localize/LanguageSelector"
-import { changeLanguage } from 'i18next';
+
 
 
 function App() {
@@ -39,8 +37,9 @@ const [searchQuery, setSearchQuery] = useState("")
 
 
 {/* <Introduction /> */}
- <LanguageSelector />
+
 <Advantages />
+<LanguageSelector />
 </Suspense>
       <Router>
         <SearchProvider value={{ searchQuery, setSearchQuery }}>

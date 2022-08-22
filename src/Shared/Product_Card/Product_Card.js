@@ -46,12 +46,16 @@ const Product_Card = (props) => {
         products.sort(sorts).filter(prds => prds.name.toLowerCase().includes(searchQuery)).map(function (prd) {
 
             return (
-                <div key={prd.prd_id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-3 my-2 position-relative" style={{ width: "14rem" }}>
+                <Link to={{ pathname: `/Details/${prd.prd_id}`, prdObj: prd }} style={{ textDecoration: 'none', color: 'black' }}>
+                <div key={prd.prd_id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-2 my-2 position-relative" style={{ width: "14rem" }}>
+                   {prd.discount > 0 ? <div className='badge badgeDiscount d-flex justify-content-center align-items-center mt-4 ms-3'>{prd.discount}% OFF</div>
+                   : <div></div>
+                   } 
                     <div className="d-flex position-absolute heart">
                         <FiHeart className="loveBtn grow" />
                     </div>
                     <div className="my-4 d-flex justify-content-center">
-                        <img src={prd.img} alt='Samsung' loading="lazy" className="ProductCard__Thumb object-contain grow mt-5" />
+                        <img src={prd.img} alt='Samsung' loading="lazy" className="object-contain grow mt-5" width={"70%"} height={"150rem"} />
                     </div>
                     <div className="ProductCard__Details p-3 bg-white">
                         <div>
@@ -67,9 +71,10 @@ const Product_Card = (props) => {
                         </button>
                     </div>
                 </div>
-            )
-        })
-    )
+            </Link>
+        )
+    })
+)
 }
 
 

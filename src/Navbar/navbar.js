@@ -250,13 +250,13 @@ const changeLanguage = (e) => {
             </div>
           </div>
 
-          <div className='secnav ps-5  align-items-center'>
-            <div class="navbarr">
+          <div className='secnav align-items-center'>
+            <div class="navbarr d-flex justify-content-center align-items-center">
 
               <a className='nava' href="#home">
                 <span className='hot'>
                   <img className='off' src={require("../assets/offer.webp")} />
-                  {t("382.label")}</span>
+                  HotDeals</span>
               </a>
               {mainCategory.map(ele => {
                 return (
@@ -301,7 +301,7 @@ const changeLanguage = (e) => {
                         <div>
                           <a className='text-primary-500 font-bold flex items-center mt-2 nuxt-link-exact-active nuxt-link-active text-decoration-none'>
                             <span className='w-12 h-12 rounded-xl mr-5 bg-primary-500 p-4 icon sprite-icons'><BsFillArrowRightSquareFill color='blue' size={50} /></span>
-                            <span className='foottxt'>{t("an.label")} </span>
+                            <span className='foottxt'> Shop All Mobiles & Tablets</span>
                           </a>
                         </div>
 

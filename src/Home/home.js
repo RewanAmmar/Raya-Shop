@@ -127,24 +127,12 @@ function SamplePrevArrow(props) {
           </div>
               <div className=" container">
           <div className="sectionIcon w-100 h-100 flex-wrap justify-between row">
-            <section className="[mt-24 lg:mt-19 px-6 lg:px-0] container mx-auto w-full [xs:px-6 md:px-0][grid grid-cols-4 md:grid-cols-6 lg:flex flex-wrap justify-between] [gap-y-14 lg:gap-0]">
-              <a
-                href="/deals"
-                className="text_a rounded-3xs justify-center item relative md:flex flex-1"
-              >
-                <img
-                  src={offer}
-                  alt="Hot Deals"
-                  role="presentation"
-                  className=" sectionImg [absolute -top-10 transform -translate-x-1/2] w-15 h-15 object-contain left-1/2"
-                />
+            <section className=" container mx-auto w-full d-flex justify-content-evenly">
 
                 <div className="sectionParag ">
-                  <p className="sectionText text-danger">
-                    {t("382.label")}
-                    </p>
+                  <p className="sectionText text-danger">Hot Deals</p>
                 </div>
-              </a>
+              
               <a
                 href="/deals"
                 className="text_a d-flex flex-column justify-content-center align-items-center rounded-3xs justify-center item relative"
