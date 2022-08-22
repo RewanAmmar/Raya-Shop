@@ -15,16 +15,20 @@ import { CgCloseR } from "react-icons/cg";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import i18n from "i18next";
-//     i18n.changeLanguage(event.target.value);
+import i18next from "i18next";
 import { getallchildcategory, getallmaincategory, getallsubcategory, getCategory, getchildbadge } from "../Shared/Firebase/Products_Functions";
 import { useSelector, useDispatch } from 'react-redux';
 import productComData from './../store/actions/productComData';
 import { search } from './../Shared/Contexts/SearchProvider';
-//   };
 
+import { useTranslation } from "react-i18next";
 export default function Navbar() {
+const { t, i18n } = useTranslation();
 
+const changeLanguage = (e) => {
+
+  i18n.changeLanguage(e.target.value);
+}
 
   const [mainCategory, setMainCategory] = useState([])
   const [subCategory, setSubCategory] = useState([])
@@ -32,7 +36,7 @@ export default function Navbar() {
 
   const {searchQuery, setSearchQuery} = useContext(search)
 
-
+  
 
   const latestValue = useRef(childCategory);
 
@@ -182,7 +186,7 @@ export default function Navbar() {
   }
 
   if (whichComponentToShow === 'Nav') {
-
+  
     return (
       <div>
 
@@ -201,16 +205,22 @@ export default function Navbar() {
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div className='upperheader HeaderLine mx-3'>
                   <div className='oneLeft pt-2'>
-                    <p className='txt'>The Easiest and Fastest instalment system.</p>
+                    <p className='txt'>{t("intro.label")}</p>
                   </div>
 
                   <div className='oneRight'>
                     <ul className='oneul'>
-                      <Link to="/payInstallment"><li className='oneli'><a className='onea mx-5' href='#'> <BsWallet2 size={18} />  Pay Installment</a></li></Link>
-                      <li className='oneli'><a className='onea mx-2' href='#'> <FiPhoneCall size={18} />  Call 19900</a></li>
-                      <Link to="/storeLocator"><li className='oneli'><a className='onea mx-5' href='#'> <TbBuildingStore size={18} />  Store Locator</a></li></Link>
-                      <li className='oneli'><a className='onea' href='#'><TbWorld size={18} />  العربية</a></li>
+                      <Link to="/payInstallment"><li className='oneli'><a className='onea mx-5' href='#'> <BsWallet2 size={18} />{t("thankyou.label")}</a></li></Link>
+                      <li className='oneli'><a className='onea mx-2' href='#'> <FiPhoneCall size={18} />{t("details.label")}</a></li>
+                      <Link to="/storeLocator"><li className='oneli'><a className='onea mx-5' href='#'> <TbBuildingStore size={18} /> {t("Advantages.label")}</a></li></Link>
+                     <li className='oneli' onChange={changeLanguage}><a className='onea' href='#'><TbWorld size={18} />
+
+
+                     <input type="radio" value="en" name="language" defaultChecked />English 
+                    <input type="radio" value="ar" name="language"/>Arabic
+</a></li>
                     </ul>
+
                   </div>
                 </div>
               </div>
@@ -227,12 +237,12 @@ export default function Navbar() {
                   <BiSearchAlt size={30} className="iccon" />
 
                   <input className='inputs' id="address_form"
-                    type="text" aria-describedby="searchHelp" placeholder='Search Product' 
+                    type="text" aria-describedby="searchHelp" placeholder={t("search.label")} 
                     onChange={e => setSearchQuery(e.target.value.toLowerCase())}
                     />
                 </div>
                 <div className=' col-6 d-flex justify-content-end  col-xl-4  order-xl-3 order-2 mr-5 pr-5 pt-3 '>
-                  <Link to="/register"><a className='Login me-4' href='#'>Login or Register</a></Link>
+                  <Link to="/register"><a className='Login me-4' href='#'>{t("login.label")}</a></Link>
 
                   <a className='sss text-light ms-4 me-3' href='#'> <BsCart2 size={25} /> </a>
                 </div>
@@ -243,7 +253,11 @@ export default function Navbar() {
           <div className='secnav align-items-center'>
             <div class="navbarr d-flex justify-content-center align-items-center">
 
-
+              <a className='nava' href="#home">
+                <span className='hot'>
+                  <img className='off' src={require("../assets/offer.webp")} />
+                  HotDeals</span>
+              </a>
               {mainCategory.map(ele => {
                 return (
                   <div className="subnav" >
@@ -270,7 +284,7 @@ export default function Navbar() {
                           </div>
                           <div className='col-4'>
                             <div className='mobtext col-12' style={{ backgroundImage: "url(" + `${ele.main_img}` + ") " }}>
-                              <h5 className='deal'>Great Deals</h5>
+                              <h5 className='deal'>{t("am.label")}</h5>
                               <p className='sale col-8 px-3 d-flex text-wrap'>{ele.main_deal}</p>
                             </div>
                           </div>
@@ -287,7 +301,7 @@ export default function Navbar() {
                         <div>
                           <a className='text-primary-500 font-bold flex items-center mt-2 nuxt-link-exact-active nuxt-link-active text-decoration-none'>
                             <span className='w-12 h-12 rounded-xl mr-5 bg-primary-500 p-4 icon sprite-icons'><BsFillArrowRightSquareFill color='blue' size={50} /></span>
-                            <span className='foottxt'> Shop All {ele.main_category}</span>
+                            <span className='foottxt'> Shop All Mobiles & Tablets</span>
                           </a>
                         </div>
 
@@ -324,7 +338,7 @@ export default function Navbar() {
                   <nav className='bg-primary-300 w-full h-full overflow-y-auto relative z-40'>
                     <div className='maincol text-center text-tertiary-600  bg-primary-700 py-5 font-light'>
 
-                      <p className='collapstext '>The Easiest and Fastest instalment system</p>
+                      <p className='collapstext '>{t("intro.label")}</p>
                     </div>
                     <div className='row'>
 
@@ -341,7 +355,7 @@ export default function Navbar() {
                       </div>  </div> </nav>
                 </div>
                 <div className='text-center'>
-                  <p className='TXTLOG'>Login or Register</p></div>
+                  <p className='TXTLOG'>{t("login.label")}</p></div>
 
                 <hr />
 
@@ -355,7 +369,7 @@ export default function Navbar() {
 
             <li className='itemsli'> <div >
               <img className='ofer' src={require("../assets/offer.webp")} />
-              <a className='itemsa px-2 text-danger' href="#home">HotDeals</a></div>
+              <a className='itemsa px-2 text-danger' href="#home">{t("382.label")}</a></div>
             </li>
             <br />
             <div>
@@ -368,7 +382,7 @@ export default function Navbar() {
                     <a className='itemsa' onClick={() => {
                       setwhichComponentToShow('MobList');
                     }}>
-                      Mobiles & Tablets
+                     {t("383.label")}
                     </a>
                   </div>
                   <div>
@@ -388,7 +402,7 @@ export default function Navbar() {
                     <a className='itemsa' onClick={() => {
                       setwhichComponentToShow('TVsList');
                     }}>
-                      Televisions
+                 {t("385.label")}
                     </a>
                   </div>
                   <div>
@@ -408,7 +422,7 @@ export default function Navbar() {
                     <a className='itemsa' onClick={() => {
                       setwhichComponentToShow('LargeList');
                     }}>
-                      Large Appliances
+                     {t("387.label")}
                     </a>
                   </div>
                   <div>
@@ -429,7 +443,7 @@ export default function Navbar() {
                     <a className='itemsa' onClick={() => {
                       setwhichComponentToShow('SmallList');
                     }}>
-                      Small Appliances
+                    {t("388.label")}
                     </a>
                   </div>
                   <div>
@@ -443,7 +457,7 @@ export default function Navbar() {
               <div className='d-flex justify-content-between align-items-center'>
                 <div>
                   <img className='mobcollpse' src={require("../assets/kitchen_appliances_2x.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">Kitchen Appliances</a>
+                  <a className='itemsa px-2 text-body' href="#company">{t("389.label")}</a>
                 </div>
                 <div>
                   <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
@@ -455,7 +469,7 @@ export default function Navbar() {
               <div className='d-flex justify-content-between align-items-center'>
                 <div>
                   <img className='mobcollpse' src={require("../assets/electronics_2x_2.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">Electronic</a>
+                  <a className='itemsa px-2 text-body' href="#company">{t("390.label")}</a>
                 </div>
                 <div>
                   <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
@@ -467,7 +481,7 @@ export default function Navbar() {
               <div className='d-flex justify-content-between align-items-center'>
                 <div>
                   <img className='mobcollpse' src={require("../assets/computers_2x.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">Laptop&Pc</a>
+                  <a className='itemsa px-2 text-body' href="#company">{t("391.label")}</a>
                 </div>
                 <div>
                   <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
@@ -478,7 +492,7 @@ export default function Navbar() {
               <div className='d-flex justify-content-between align-items-center'>
                 <div>
                   <img className='mobcollpse' src={require("../assets/health_and_wellness_2x.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">Health &Beauty</a>
+                  <a className='itemsa px-2 text-body' href="#company">{t("501.label")}</a>
                 </div>
                 <div>
                   <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
@@ -490,7 +504,7 @@ export default function Navbar() {
               <div className='d-flex justify-content-between align-items-center'>
                 <div>
                   <img className='mobcollpse' src={require("../assets/vehicles_2x.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">Vehicles</a>
+                  <a className='itemsa px-2 text-body' href="#company">{t("sw.label")}</a>
                 </div>
                 <div>
                   <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
@@ -501,16 +515,16 @@ export default function Navbar() {
         </div>
         <div className='minifooter'>
           <ul>
-            <li className='minili'><a className='minia' href='#'> <BsWallet2 size={18} /> Pay Installment</a></li><br />
-            <li className='minili'><a className='minia' href='#'> <FiPhoneCall size={18} />  Call 19900</a></li><br />
-            <li className='minili'><a className='minia' href='#'> <TbBuildingStore size={18} />  Store Locator</a></li><br />
+            <li className='minili'><a className='minia' href='#'> <BsWallet2 size={18} /> {t("thankyou.label")}</a></li><br />
+            <li className='minili'><a className='minia' href='#'> <FiPhoneCall size={18} />{t("details.label")}</a></li><br />
+            <li className='minili'><a className='minia' href='#'> <TbBuildingStore size={18} />{t("Advantages.label")}</a></li><br />
             <li className='minili'>
               <div className='d-flex justify-content-between align-items-center'>
                 <div>
-                  <a className='minia' href='#'><TbWorld size={18} />Change Language
+                  <a className='minia' href='#'><TbWorld size={18} />{t("eee.label")}
                   </a>
                 </div> <div>
-                  <span className='px-5'>عربى</span>
+                  <span className='px-5'>{t("eewe.label")}</span>
                 </div>
               </div>
             </li>

@@ -16,7 +16,7 @@ import './LoginResposive.css'
 
 
   return (<>
-  <InternalHeader/>
+  {/* <InternalHeader/> */}
     <div className='login'>
         <div className='container'>
       <div className='link3'><span>&lt;</span><a href=''> {t("162.label")} </a></div>

@@ -77,10 +77,10 @@ const Product_Card = (props) => {
                         
                        
                         <div class="border border-secondary-200 w-full mt-1 mb-3"></div>
-                        <p className="font-body text-sm">From 480 EGP / 24 Months with Raya Installments</p>
+                        <p className="font-body text-sm">{t("ww.label")}</p>
                         <button type="button" class="compareButton p-3 text-sm mb-2">
                             <MdCompare className="mx-3" size={18} />
-                            Compare
+                            {t("367.label")}
                         </button>
                     </div>
                 </div>

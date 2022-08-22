@@ -26,7 +26,7 @@ import { useTranslation } from "react-i18next";
                 <form>
                     <label>{t("20.label")}</label>
                      <input className='form-control inId' placeholder='ex. 0000 0000 0000 0000' type="number"/>
-                     <button className='btn border-2 button2'>{t("21.label")}</button>
+                     <button className='btn border-2 button2'>{t("kd.label")}</button>
                 </form>
                 
                     

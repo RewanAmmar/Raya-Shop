@@ -17,24 +17,36 @@ import { getCategory } from './Shared/Firebase/Products_Functions';
 import React, { Component, Suspense ,useEffect , useState} from "react";
 import "./App.css";
 import "./localize/i18n";
-// import Introduction from './localize/Introduction';
 import Advantages from "./localize/Advantages"
-import LanguageSelector from "./localize/LanguageSelector";
+import Compare from "./Compare/compare"
+import LanguageSelector from "./localize/LanguageSelector"
+
 
 
 function App() {
 
 
-  const [searchQuery, setSearchQuery] = useState("")
+const [searchQuery, setSearchQuery] = useState("")
 
 
   return (
 
     <div>
+    <Suspense fallback={null}>
 
+
+{/* <Introduction /> */}
+
+<Advantages />
+<LanguageSelector />
+</Suspense>
       <Router>
         <SearchProvider value={{ searchQuery, setSearchQuery }}>
+        
+            <div >
           <Navbar />
+          {/* <Compare/> */}
+        
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/Home' exact component={Home} />
@@ -54,8 +66,10 @@ function App() {
             <Route path='/payInstallment' exact component={PayInstallment} />
             <Route path='/storeLocator' exact component={StoreLocator} />
           </Switch>
-          <Footer />
-        </SearchProvider>
+          {/* <Footer /> */}
+          </div>
+     
+       </SearchProvider>
 
       </Router>
 
