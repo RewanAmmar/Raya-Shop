@@ -12,53 +12,58 @@ import { useSelector } from "react-redux";
 
 const Product_Component = (props) => {
 
-    const [sort,setSort]=useState("")
+    const [sort, setSort] = useState("")
+    const [prd, setPrd] = useState([])
 
-    console.log(sort)
-    
-    const state = useSelector((state) => state.product)
-   
+    const state = useSelector((state) => state.productComReducer.product)
 
 
 
     useEffect(() => {
 
-        // console.log(state)
 
-    }, []);
+
+        const items = JSON.parse(localStorage.getItem('data'));
+
+        setPrd(items)
+
+    }, [state]);
 
     return (<>
 
         <div className="mx-2">
-            <div className="container-fluid px-0 mx-0">
+            <div className="container-fluid px-0 mx-3">
 
                 <div className="row d-flex flex-column flex-grow-1">
 
                     <div className="col-12 px-0 mx-0">
 
-
-                    <div className="col-12 py-5">
+                        <div className="col-12 py-5">
                             <div className="d-flex mx-3 col-12 justify-content-between flex-wrap">
-
-                                <span className="col-md-6 col-12">{state.length} Product</span>
-
+                                {state.length <= 0 ?
+                                    <span className="col-md-6 col-12">{prd.length} Product</span>
+                                    :
+                                    <span className="col-md-6 col-12">{prd.length} Product</span>
+                                }
                                 <div className="d-flex">
-                                <FaSortAmountDown />
-                                <select className="d-flex px-5 border-bottom dropDown active" value="" onChange={e => setSort(e.target.value)}>
-                                    <option className="dropdown-item" value="" selected disabled>Position</option>
-                                    <option className="dropdown-item" value="A-Z">A-Z</option>
-                                    <option className="dropdown-item" value="asc">Price (Low to High)</option>
-                                    <option className="dropdown-item" value="des">Price (High to Low)</option>
-                                </select>
+                                    <FaSortAmountDown />
+                                    <select className="d-flex px-5 border-bottom dropDown active" value="" onChange={e => setSort(e.target.value)}>
+                                        <option className="dropdown-item" value="" selected disabled>Position</option>
+                                        <option className="dropdown-item" value="A-Z">A-Z</option>
+                                        <option className="dropdown-item" value="asc">Price (Low to High)</option>
+                                        <option className="dropdown-item" value="des">Price (High to Low)</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
 
                         <div className="d-flex flex-wrap">
-                            
-                        <Product_Card prd={state} sort={sort}/>
-
+                            {state.length <= 0 ?
+                                <Product_Card prd={prd} sort={sort} />
+                                :
+                                <Product_Card prd={state} sort={sort} />
+                            }
                         </div>
 
 

@@ -18,7 +18,7 @@ import React, { Component, Suspense ,useEffect , useState} from "react";
 import "./App.css";
 import "./localize/i18n";
 import Advantages from "./localize/Advantages"
-import Compare from "./Compare/compare"
+import Compares from "./Compare/compare"
 import LanguageSelector from "./localize/LanguageSelector"
 
 
@@ -50,6 +50,7 @@ const [searchQuery, setSearchQuery] = useState("")
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/Home' exact component={Home} />
+            <Route path='/Compare' exact component={Compares} />
             <Route path='/Mobiles&Tablets' exact component={Layout} />
             <Route path='/KitchenAppliances' exact component={Layout} />
             <Route path='/LargeAppliances' exact component={Layout} />

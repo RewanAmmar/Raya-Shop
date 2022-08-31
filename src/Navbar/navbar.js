@@ -23,20 +23,21 @@ import { search } from './../Shared/Contexts/SearchProvider';
 
 import { useTranslation } from "react-i18next";
 export default function Navbar() {
-const { t, i18n } = useTranslation();
+  
+  const { t, i18n } = useTranslation();
 
-const changeLanguage = (e) => {
+  const changeLanguage = (e) => {
 
-  i18n.changeLanguage(e.target.value);
-}
+    i18n.changeLanguage(e.target.value);
+  }
 
   const [mainCategory, setMainCategory] = useState([])
   const [subCategory, setSubCategory] = useState([])
   const [childCategory, setChildCategory] = useState([])
 
-  const {searchQuery, setSearchQuery} = useContext(search)
+  const { searchQuery, setSearchQuery } = useContext(search)
 
-  
+
 
   const latestValue = useRef(childCategory);
 
@@ -100,8 +101,9 @@ const changeLanguage = (e) => {
                 getallchildcategory(ele).then(result => {
 
                   prd = [...result, ...prd]
-                 
+
                   dispatch(productComData({ element, prd, headerBadge, header }))
+                  localStorage.setItem("data", JSON.stringify(prd))
                 })
               })
 
@@ -135,8 +137,9 @@ const changeLanguage = (e) => {
           getallchildcategory(ele).then(result => {
 
             prd = [...result, ...prd]
-           
+
             dispatch(productComData({ element, prd, headerBadge, header }))
+            localStorage.setItem("data", JSON.stringify(prd))
           })
         })
       }
@@ -161,6 +164,7 @@ const changeLanguage = (e) => {
         const prd = res
 
         dispatch(productComData({ element, prd, headerBadge, header }))
+        localStorage.setItem("data", JSON.stringify(prd))
 
       }
       )
@@ -186,11 +190,12 @@ const changeLanguage = (e) => {
   }
 
   if (whichComponentToShow === 'Nav') {
-  
+
     return (
       <div>
 
         <div className='row'>
+          
           <div className='navbar navbar-expand-lg'>
             <div className='container'>
               <button onClick={() => {
@@ -213,12 +218,12 @@ const changeLanguage = (e) => {
                       <Link to="/payInstallment"><li className='oneli'><a className='onea mx-5' href='#'> <BsWallet2 size={18} />{t("thankyou.label")}</a></li></Link>
                       <li className='oneli'><a className='onea mx-2' href='#'> <FiPhoneCall size={18} />{t("details.label")}</a></li>
                       <Link to="/storeLocator"><li className='oneli'><a className='onea mx-5' href='#'> <TbBuildingStore size={18} /> {t("Advantages.label")}</a></li></Link>
-                     <li className='oneli' onChange={changeLanguage}><a className='onea' href='#'><TbWorld size={18} />
+                      <li className='oneli' onChange={changeLanguage}><a className='onea' href='#'><TbWorld size={18} />
 
 
-                     <input type="radio" value="en" name="language" defaultChecked />English 
-                    <input type="radio" value="ar" name="language"/>Arabic
-</a></li>
+                        <input type="radio" value="en" name="language" defaultChecked />English
+                        <input type="radio" value="ar" name="language" />Arabic
+                      </a></li>
                     </ul>
 
                   </div>
@@ -237,9 +242,9 @@ const changeLanguage = (e) => {
                   <BiSearchAlt size={30} className="iccon" />
 
                   <input className='inputs' id="address_form"
-                    type="text" aria-describedby="searchHelp" placeholder={t("search.label")} 
+                    type="text" aria-describedby="searchHelp" placeholder={t("search.label")}
                     onChange={e => setSearchQuery(e.target.value.toLowerCase())}
-                    />
+                  />
                 </div>
                 <div className=' col-6 d-flex justify-content-end  col-xl-4  order-xl-3 order-2 mr-5 pr-5 pt-3 '>
                   <Link to="/register"><a className='Login me-4' href='#'>{t("login.label")}</a></Link>
@@ -264,7 +269,7 @@ const changeLanguage = (e) => {
                           <div className='col-8 ps-5 '>
                             {subCategory.map(ele => {
                               return (
-                               <a className=" subnava" href="#bring" ><h4 className='maiin ms-4' key={ele.sub_category} onClick={() => sub(ele)}>{ele.sub_category}</h4>
+                                <a className=" subnava" href="#bring" ><h4 className='maiin ms-4' key={ele.sub_category} onClick={() => sub(ele)}>{ele.sub_category}</h4>
                                   <ul className='sub2nav ms-4'>
                                     {childCategory.filter(x => x.sub_category == ele.sub_category).map(ele => {
                                       // console.log(childCategory)
@@ -306,7 +311,7 @@ const changeLanguage = (e) => {
                 )
               })}
 
-              
+
 
 
             </div>
@@ -377,7 +382,7 @@ const changeLanguage = (e) => {
                     <a className='itemsa' onClick={() => {
                       setwhichComponentToShow('MobList');
                     }}>
-                     {t("383.label")}
+                      {t("383.label")}
                     </a>
                   </div>
                   <div>
@@ -397,7 +402,7 @@ const changeLanguage = (e) => {
                     <a className='itemsa' onClick={() => {
                       setwhichComponentToShow('TVsList');
                     }}>
-                 {t("385.label")}
+                      {t("385.label")}
                     </a>
                   </div>
                   <div>
@@ -417,7 +422,7 @@ const changeLanguage = (e) => {
                     <a className='itemsa' onClick={() => {
                       setwhichComponentToShow('LargeList');
                     }}>
-                     {t("387.label")}
+                      {t("387.label")}
                     </a>
                   </div>
                   <div>
@@ -438,7 +443,7 @@ const changeLanguage = (e) => {
                     <a className='itemsa' onClick={() => {
                       setwhichComponentToShow('SmallList');
                     }}>
-                    {t("388.label")}
+                      {t("388.label")}
                     </a>
                   </div>
                   <div>

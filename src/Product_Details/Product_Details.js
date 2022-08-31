@@ -31,6 +31,7 @@ export default function Product_Details(props) {
 
         setPrd(props.location.prdObj)
 
+
         setSpacification(props.location.prdObj.specifications)
 
     }, [prd]);

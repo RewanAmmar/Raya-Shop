@@ -28,6 +28,13 @@
   border: none;
   color: #045f9b;
 }
+.compareButtonAdded{
+  border-radius: 20px;
+  background-color: #006cb7;
+  border: none;
+  color: #ffffff;
+  
+}
 .endLine {
   width: 100%; 
   text-align: center; 
@@ -76,11 +83,6 @@
   color: black !important;
 
 }
-
-div{
-  /* border: 1px solid black; */
-}
-
 
 
 .box{
@@ -358,4 +360,11 @@ div{
   -webkit-line-clamp: 3; /* number of lines to show */
           line-clamp: 3; 
   -webkit-box-orient: vertical;
+}
+.comp{
+  background-color: rgb(255, 255, 255);
+  border-radius: 55px !important;
+  height: 6rem;
+  position:fixed;
+  bottom:0;
 }

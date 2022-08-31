@@ -1,8 +1,9 @@
 import { legacy_createStore as createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import productComReducer from './reducers/productComReducer';
+import combineReducers from "./reducers/combineReducers";
 
 
-const productStore = createStore(productComReducer,composeWithDevTools())
+
+const productStore = createStore(combineReducers,composeWithDevTools())
 
 export default productStore

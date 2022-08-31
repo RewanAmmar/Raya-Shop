@@ -169,7 +169,7 @@ export default function Home () {
           </div>
               <div className=" container">
           <div className="sectionIcon w-100 h-100 flex-wrap justify-between row">
-            <section className="[mt-24 lg:mt-19 px-6 lg:px-0] container mx-auto w-full [xs:px-6 md:px-0][grid grid-cols-4 md:grid-cols-6 lg:flex flex-wrap justify-between] [gap-y-14 lg:gap-0]">
+            <section className="[mt-24 lg:mt-19 px-6 lg:px-0] container d-flex justify-content-evenly mx-auto w-full [xs:px-6 md:px-0][grid grid-cols-4 md:grid-cols-6 lg:flex flex-wrap justify-between] [gap-y-14 lg:gap-0]">
 
               <a
                 href="/deals"
@@ -317,7 +317,7 @@ export default function Home () {
         {prds.filter(x => x.discount > 17 && x.discount != 0).map(ele =>{
           return (
             <Link to={{ pathname: `/Details/${ele.prd_id}`, prdObj: ele }} style={{ textDecoration: 'none', color: 'black' }}>
-            <div key={ele.id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-1 my-2 position-relative" style={{ width: "14rem" }}>
+            <div key={ele.id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-1 my-2 position-relative" style={{ width: "14rem"}}>
                    {ele.discount > 0 ? <div className='badge badgeDiscount ms-3 position-absolute d-flex justify-content-center align-items-center mt-4 '>{ele.discount}% OFF</div>
                    : <div></div>
                    } 
@@ -378,8 +378,8 @@ export default function Home () {
             {/* <div className="d-flex flex-wrap">           */}
         {prds.map(ele =>{
           return (
-            <Link to={{ pathname: `/Details/${ele.prd_id}`, prdObj: ele }} style={{ textDecoration: 'none', color: 'black' }}>
-            <div key={ele.id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-1 my-2 position-relative" style={{ width: "14rem" }}>
+            <Link to={{ pathname: `/Details/${ele.prd_id}`, prdObj: ele }}>
+            <div key={ele.id} className="ProductCard  d-flex flex-column flex-grow-1 shadow bg-white mx-1 my-2 position-relative"  style={{ width: "14rem" }}>
                    {ele.discount > 0 ? <div className='badge badgeDiscount ms-3 position-absolute d-flex justify-content-center align-items-center mt-4 '>{ele.discount}% OFF</div>
                    : <div></div>
                    } 
