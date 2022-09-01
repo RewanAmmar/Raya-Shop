@@ -20,15 +20,21 @@ import { getallchildcategory, getallmaincategory, getallsubcategory, getCategory
 import { useSelector, useDispatch } from 'react-redux';
 import productComData from './../store/actions/productComData';
 import { search } from './../Shared/Contexts/SearchProvider';
-
 import { useTranslation } from "react-i18next";
-export default function Navbar() {
-  
-  const { t, i18n } = useTranslation();
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { auth, db } from '../Firebase Configration/Firebase'
+import Dropdown from 'react-bootstrap/Dropdown';
+import cookies from "js-cookie";
 
+
+export default function Navbar() {
+
+  const { t, i18n } = useTranslation();
+  const currentLanguageCode = cookies.get("i18next");
   const changeLanguage = (e) => {
 
     i18n.changeLanguage(e.target.value);
+    
   }
 
   const [mainCategory, setMainCategory] = useState([])
@@ -192,10 +198,10 @@ export default function Navbar() {
   if (whichComponentToShow === 'Nav') {
 
     return (
-      <div>
+     
 
         <div className='row'>
-          
+
           <div className='navbar navbar-expand-lg'>
             <div className='container'>
               <button onClick={() => {
@@ -261,310 +267,323 @@ export default function Navbar() {
               {mainCategory.map(ele => {
                 return (
                   <div className="subnav" >
-                    <Link to={(ele.main_category).replace(/\s/g, '')} key={ele.main_id} onClick={() => main(ele)} onMouseOver={() => getMainCat(ele)} ><button class="subnavbtn">{ele.main_category}</button></Link>
-
+                    {currentLanguageCode === 'ar' ? (<Link to={(ele.main_categoryAR).replace(/\s/g, '')} key={ele.main_id} onClick={() => main(ele)} onMouseOver={() => getMainCat(ele)} ><button class="subnavbtn">{ele.main_categoryAR}</button></Link>
+                    ) : (<Link to={(ele.main_category).replace(/\s/g, '')} key={ele.main_id} onClick={() => main(ele)} onMouseOver={() => getMainCat(ele)} ><button class="subnavbtn">{ele.main_category}</button></Link>
+                    )}
                     <div className=" subnav-content">
                       <div className='row d-flex  gx-0  '>
                         <div className='row'>
                           <div className='col-8 ps-5 '>
                             {subCategory.map(ele => {
                               return (
-                                <a className=" subnava" href="#bring" ><h4 className='maiin ms-4' key={ele.sub_category} onClick={() => sub(ele)}>{ele.sub_category}</h4>
-                                  <ul className='sub2nav ms-4'>
-                                    {childCategory.filter(x => x.sub_category == ele.sub_category).map(ele => {
-                                      // console.log(childCategory)
-                                      return (
-                                        <li className='sub2navli' key={ele.child_category} onClick={() => child(ele)}>{ele.child_category}</li>
-                                      )
-                                    })}
-                                  </ul>
-                                </a>
+                                <>
+                                  {currentLanguageCode === 'ar' ? (<a className=" subnava" href="#bring" ><h4 className='maiin ms-4' key={ele.sub_categoryAR} onClick={() => sub(ele)}>{ele.sub_categoryAR}</h4>
+                                    <ul className='sub2nav ms-4'>
+                                      {childCategory.filter(x => x.sub_categoryAR == ele.sub_categoryAR).map(ele => {
+                                        // console.log(childCategory)
+                                        return (
+                                          <li className='sub2navli' key={ele.child_categoryAR} onClick={() => child(ele)}>{ele.child_categoryAR}</li>
+                                        )
+                                      })}
+                                    </ul>
+                                  </a>) : (<a className=" subnava" href="#bring" ><h4 className='maiin ms-4' key={ele.sub_category} onClick={() => sub(ele)}>{ele.sub_category}</h4>
+                                    <ul className='sub2nav ms-4'>
+                                      {childCategory.filter(x => x.sub_category == ele.sub_category).map(ele => {
+                                        // console.log(childCategory)
+                                        return (
+                                          <li className='sub2navli' key={ele.child_category} onClick={() => child(ele)}>{ele.child_category}</li>
+                                        )
+                                      })}
+                                    </ul>
+                                  </a>)}
+
+                                </>
                               )
                             })}
                           </div>
                           <div className='col-4'>
                             <div className='mobtext col-12' style={{ backgroundImage: "url(" + `${ele.main_img}` + ") " }}>
                               <h5 className='deal'>{t("am.label")}</h5>
-                              <p className='sale col-8 px-3 d-flex text-wrap'>{ele.main_deal}</p>
+                              {currentLanguageCode === 'ar' ? (<p className='sale col-8 px-3 d-flex text-wrap'>{ele.main_dealAR}</p>) : (<p className='sale col-8 px-3 d-flex text-wrap'>{ele.main_deal}</p>)}
                             </div>
                           </div>
-                        </div>
 
-                        <div className='row'>
-                          <div className='col-md-6'>
-                            <img src={require("../assets/oppo.webp")} />
-                            <img src={require("../assets/apple.webp")} />
-                            <img src={require("../assets/5.webp")} />
-                            <img src={require("../assets/sam.webp")} />
+                          <div className='row'>
+                            <div className='col-md-6'>
+                              <img src={require("../assets/oppo.webp")} />
+                              <img src={require("../assets/apple.webp")} />
+                              <img src={require("../assets/5.webp")} />
+                              <img src={require("../assets/sam.webp")} />
+                            </div>
                           </div>
-                        </div>
-                        <div>
-                          <a className='text-primary-500 font-bold flex items-center mt-2 nuxt-link-exact-active nuxt-link-active text-decoration-none'>
-                            <span className='w-12 h-12 rounded-xl mr-5 bg-primary-500 p-4 icon sprite-icons'><BsFillArrowRightSquareFill color='blue' size={50} /></span>
-                            <span className='foottxt'> Shop All Mobiles & Tablets</span>
-                          </a>
-                        </div>
+                          <div>
+                            <a className='text-primary-500 font-bold flex items-center mt-2 nuxt-link-exact-active nuxt-link-active text-decoration-none'>
+                              <span className='w-12 h-12 rounded-xl mr-5 bg-primary-500 p-4 icon sprite-icons'><BsFillArrowRightSquareFill color='blue' size={50} /></span>
+                              <span className='foottxt'> Shop All Mobiles & Tablets</span>
+                            </a>
+                          </div>
 
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
+                    </div>
+                    )
               })}
 
 
 
 
-            </div>
+                  
+          </div>
           </div>
         </div>
-      </div>
 
 
-    );
+        );
   }
   else if (whichComponentToShow === 'Secnav') {
     return (
 
-      <div>
+        <div>
 
-        <div className='row'>
+          <div className='row'>
 
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
 
 
-              <div className='container-fluid flex items-center'>
-                <div className='sidemenu'>
-                  <nav className='bg-primary-300 w-full h-full overflow-y-auto relative z-40'>
-                    <div className='maincol text-center text-tertiary-600  bg-primary-700 py-5 font-light'>
+                <div className='container-fluid flex items-center'>
+                  <div className='sidemenu'>
+                    <nav className='bg-primary-300 w-full h-full overflow-y-auto relative z-40'>
+                      <div className='maincol text-center text-tertiary-600  bg-primary-700 py-5 font-light'>
 
-                      <p className='collapstext '>{t("intro.label")}</p>
-                    </div>
-                    <div className='row'>
-
-                      <div className='butn  col-3 ' onClick={() => {
-                        setwhichComponentToShow('Nav');
-
-                      }}>
-                        <div >
-                          < CgCloseR size={30} />
-                        </div>
+                        <p className='collapstext '>{t("intro.label")}</p>
                       </div>
-                      <div className='col-5'>
-                        <img className='piclogo' src={require("../assets/seclogo.png")} />
-                      </div>  </div> </nav>
-                </div>
-                <div className='text-center'>
-                  <p className='TXTLOG'>{t("login.label")}</p></div>
+                      <div className='row'>
 
-                <hr />
+                        <div className='butn  col-3 ' onClick={() => {
+                          setwhichComponentToShow('Nav');
 
-              </div>
-            </div>
-          </nav>
-        </div>
-
-        <div className='items'>
-          <ul className='mt-8 space-y-10 px-6'>
-
-            <li className='itemsli'> <div >
-              <img className='ofer' src={require("../assets/offer.webp")} />
-              <a className='itemsa px-2 text-danger' href="#home">{t("382.label")}</a></div>
-            </li>
-            <br />
-            <div>
-              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <div>
-
-                    <img className='mobcollpse' src={require("../assets/mobiles-_-tablets.png")} />
-
-                    <a className='itemsa' onClick={() => {
-                      setwhichComponentToShow('MobList');
-                    }}>
-                      {t("383.label")}
-                    </a>
+                        }}>
+                          <div >
+                            < CgCloseR size={30} />
+                          </div>
+                        </div>
+                        <div className='col-5'>
+                          <img className='piclogo' src={require("../assets/seclogo.png")} />
+                        </div>  </div> </nav>
                   </div>
-                  <div>
-                    <span><MdKeyboardArrowRight size={50} /></span>
-                  </div>
-                </div>
-              </li>
-            </div>
-            <br />
-            <div>
-              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <div>
+                  <div className='text-center'>
+                    <p className='TXTLOG'>{t("login.label")}</p></div>
 
-                    <img className='mobcollpse' src={require("../assets/tv_home_theater_2x.png")} />
+                  <hr />
 
-                    <a className='itemsa' onClick={() => {
-                      setwhichComponentToShow('TVsList');
-                    }}>
-                      {t("385.label")}
-                    </a>
-                  </div>
-                  <div>
-                    <span><MdKeyboardArrowRight size={50} /></span>
-                  </div>
-                </div>
-              </li>
-            </div>
-            <br />
-            <div>
-              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <div>
-
-                    <img className='mobcollpse' src={require("../assets/large_appliances_2x.png")} />
-
-                    <a className='itemsa' onClick={() => {
-                      setwhichComponentToShow('LargeList');
-                    }}>
-                      {t("387.label")}
-                    </a>
-                  </div>
-                  <div>
-                    <span><MdKeyboardArrowRight size={50} /></span>
-                  </div>
-                </div>
-              </li>
-            </div>
-            <br />
-            <div>
-
-              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <div>
-
-                    <img className='mobcollpse' src={require("../assets/small_appliances_2x.png")} />
-
-                    <a className='itemsa' onClick={() => {
-                      setwhichComponentToShow('SmallList');
-                    }}>
-                      {t("388.label")}
-                    </a>
-                  </div>
-                  <div>
-                    <span><MdKeyboardArrowRight size={50} /></span>
-                  </div>
-                </div>
-              </li>
-            </div>
-            <br />
-            <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-              <div className='d-flex justify-content-between align-items-center'>
-                <div>
-                  <img className='mobcollpse' src={require("../assets/kitchen_appliances_2x.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">{t("389.label")}</a>
-                </div>
-                <div>
-                  <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
-                </div></div>
-            </li>
-            <br />
-
-            <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-              <div className='d-flex justify-content-between align-items-center'>
-                <div>
-                  <img className='mobcollpse' src={require("../assets/electronics_2x_2.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">{t("390.label")}</a>
-                </div>
-                <div>
-                  <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
-                </div></div>
-            </li>
-            <br />
-            <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-
-              <div className='d-flex justify-content-between align-items-center'>
-                <div>
-                  <img className='mobcollpse' src={require("../assets/computers_2x.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">{t("391.label")}</a>
-                </div>
-                <div>
-                  <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
-                </div></div>
-            </li>
-            <br />
-            <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-              <div className='d-flex justify-content-between align-items-center'>
-                <div>
-                  <img className='mobcollpse' src={require("../assets/health_and_wellness_2x.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">{t("501.label")}</a>
-                </div>
-                <div>
-                  <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
                 </div>
               </div>
-            </li>
-            <br />
-            <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
-              <div className='d-flex justify-content-between align-items-center'>
-                <div>
-                  <img className='mobcollpse' src={require("../assets/vehicles_2x.png")} />
-                  <a className='itemsa px-2 text-body' href="#company">{t("sw.label")}</a>
-                </div>
-                <div>
-                  <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
-                </div></div>
-            </li>
-            <br />
-          </ul>
-        </div>
-        <div className='minifooter'>
-          <ul>
-            <li className='minili'><a className='minia' href='#'> <BsWallet2 size={18} /> {t("thankyou.label")}</a></li><br />
-            <li className='minili'><a className='minia' href='#'> <FiPhoneCall size={18} />{t("details.label")}</a></li><br />
-            <li className='minili'><a className='minia' href='#'> <TbBuildingStore size={18} />{t("Advantages.label")}</a></li><br />
-            <li className='minili'>
-              <div className='d-flex justify-content-between align-items-center'>
-                <div>
-                  <a className='minia' href='#'><TbWorld size={18} />{t("eee.label")}
-                  </a>
-                </div> <div>
-                  <span className='px-5'>{t("eewe.label")}</span>
-                </div>
+            </nav>
+          </div>
+
+          <div className='items'>
+            <ul className='mt-8 space-y-10 px-6'>
+
+              <li className='itemsli'> <div >
+                <img className='ofer' src={require("../assets/offer.webp")} />
+                <a className='itemsa px-2 text-danger' href="#home">{t("382.label")}</a></div>
+              </li>
+              <br />
+              <div>
+                <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+                  <div className='d-flex justify-content-between align-items-center'>
+                    <div>
+
+                      <img className='mobcollpse' src={require("../assets/mobiles-_-tablets.png")} />
+
+                      <a className='itemsa' onClick={() => {
+                        setwhichComponentToShow('MobList');
+                      }}>
+                        {t("383.label")}
+                      </a>
+                    </div>
+                    <div>
+                      <span><MdKeyboardArrowRight size={50} /></span>
+                    </div>
+                  </div>
+                </li>
               </div>
-            </li>
-          </ul>
+              <br />
+              <div>
+                <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+                  <div className='d-flex justify-content-between align-items-center'>
+                    <div>
+
+                      <img className='mobcollpse' src={require("../assets/tv_home_theater_2x.png")} />
+
+                      <a className='itemsa' onClick={() => {
+                        setwhichComponentToShow('TVsList');
+                      }}>
+                        {t("385.label")}
+                      </a>
+                    </div>
+                    <div>
+                      <span><MdKeyboardArrowRight size={50} /></span>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <br />
+              <div>
+                <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+                  <div className='d-flex justify-content-between align-items-center'>
+                    <div>
+
+                      <img className='mobcollpse' src={require("../assets/large_appliances_2x.png")} />
+
+                      <a className='itemsa' onClick={() => {
+                        setwhichComponentToShow('LargeList');
+                      }}>
+                        {t("387.label")}
+                      </a>
+                    </div>
+                    <div>
+                      <span><MdKeyboardArrowRight size={50} /></span>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <br />
+              <div>
+
+                <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+                  <div className='d-flex justify-content-between align-items-center'>
+                    <div>
+
+                      <img className='mobcollpse' src={require("../assets/small_appliances_2x.png")} />
+
+                      <a className='itemsa' onClick={() => {
+                        setwhichComponentToShow('SmallList');
+                      }}>
+                        {t("388.label")}
+                      </a>
+                    </div>
+                    <div>
+                      <span><MdKeyboardArrowRight size={50} /></span>
+                    </div>
+                  </div>
+                </li>
+              </div>
+              <br />
+              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+                <div className='d-flex justify-content-between align-items-center'>
+                  <div>
+                    <img className='mobcollpse' src={require("../assets/kitchen_appliances_2x.png")} />
+                    <a className='itemsa px-2 text-body' href="#company">{t("389.label")}</a>
+                  </div>
+                  <div>
+                    <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
+                  </div></div>
+              </li>
+              <br />
+
+              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+                <div className='d-flex justify-content-between align-items-center'>
+                  <div>
+                    <img className='mobcollpse' src={require("../assets/electronics_2x_2.png")} />
+                    <a className='itemsa px-2 text-body' href="#company">{t("390.label")}</a>
+                  </div>
+                  <div>
+                    <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
+                  </div></div>
+              </li>
+              <br />
+              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+
+                <div className='d-flex justify-content-between align-items-center'>
+                  <div>
+                    <img className='mobcollpse' src={require("../assets/computers_2x.png")} />
+                    <a className='itemsa px-2 text-body' href="#company">{t("391.label")}</a>
+                  </div>
+                  <div>
+                    <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
+                  </div></div>
+              </li>
+              <br />
+              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+                <div className='d-flex justify-content-between align-items-center'>
+                  <div>
+                    <img className='mobcollpse' src={require("../assets/health_and_wellness_2x.png")} />
+                    <a className='itemsa px-2 text-body' href="#company">{t("501.label")}</a>
+                  </div>
+                  <div>
+                    <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
+                  </div>
+                </div>
+              </li>
+              <br />
+              <li className='itemsli flex justify-between items-center font-bold text-primary-700 font-body'>
+                <div className='d-flex justify-content-between align-items-center'>
+                  <div>
+                    <img className='mobcollpse' src={require("../assets/vehicles_2x.png")} />
+                    <a className='itemsa px-2 text-body' href="#company">{t("sw.label")}</a>
+                  </div>
+                  <div>
+                    <span className='fs-1 w-100'><MdKeyboardArrowRight size={50} /></span>
+                  </div></div>
+              </li>
+              <br />
+            </ul>
+          </div>
+          <div className='minifooter'>
+            <ul>
+              <li className='minili'><a className='minia' href='#'> <BsWallet2 size={18} /> {t("thankyou.label")}</a></li><br />
+              <li className='minili'><a className='minia' href='#'> <FiPhoneCall size={18} />{t("details.label")}</a></li><br />
+              <li className='minili'><a className='minia' href='#'> <TbBuildingStore size={18} />{t("Advantages.label")}</a></li><br />
+              <li className='minili'>
+                <div className='d-flex justify-content-between align-items-center'>
+                  <div>
+                    <a className='minia' href='#'><TbWorld size={18} />{t("eee.label")}
+                    </a>
+                  </div> <div>
+                    <span className='px-5'>{t("eewe.label")}</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    );
+        );
   }
-  else if (whichComponentToShow === 'MobList') {
+        else if (whichComponentToShow === 'MobList') {
     return (
-      <div>
-        <MobList moveData={moveData} />
-      </div>
-    );
+        <div>
+          <MobList moveData={moveData} />
+        </div>
+        );
   }
 
-  else if (whichComponentToShow === 'TVsList') {
+        else if (whichComponentToShow === 'TVsList') {
     return (
-      <div>
-        <TVsList moveData={moveData} />
+        <div>
+          <TVsList moveData={moveData} />
 
-      </div>
-    );
+        </div>
+        );
   }
 
-  else if (whichComponentToShow === 'SmallList') {
+        else if (whichComponentToShow === 'SmallList') {
     return (
-      <div>
-        <SmallList moveData={moveData} />
-      </div>
-    );
+        <div>
+          <SmallList moveData={moveData} />
+        </div>
+        );
   }
-  else if (whichComponentToShow === 'LargeList') {
+        else if (whichComponentToShow === 'LargeList') {
     return (
-      <div>
-        <LargeList moveData={moveData} />
-      </div>
-    );
+        <div>
+          <LargeList moveData={moveData} />
+        </div>
+        );
   }
-  return null;
+        return null;
 
 
 }

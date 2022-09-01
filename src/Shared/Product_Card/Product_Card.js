@@ -5,18 +5,27 @@ import StarRating from 'star-rating-react';
 import { FaSortAmountDown } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { search } from '../Contexts/SearchProvider';
+import Product_Details from './../../Product_Details/Product_Details';
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from 'react-redux';
 import Compare from '../../store/actions/compare';
 import { Check } from 'react-bootstrap-icons';
 import CompareCase from '../../store/actions/comparecase';
+import { db } from '../../Firebase Configration/Firebase'
+import { updateDoc, doc, arrayUnion } from 'firebase/firestore';
+import cookies from "js-cookie";
+
 
 const Product_Card = (props) => {
+
     const { t, i18n } = useTranslation();
+    const currentLanguageCode = cookies.get("i18next");
+
     const products = props.prd
+
     const sort = props.sort
 
-    const [iscomplete,setIscomplete]=useState(false)
+    const [iscomplete, setIscomplete] = useState(false)
 
     const { searchQuery, setSearchQuery } = useContext(search)
     const dispatch = useDispatch()
@@ -44,9 +53,9 @@ const Product_Card = (props) => {
         if (compArray.length < 4) {
             if (compArray.length == 0 || compArray[0].category_path.sub_category == prd.category_path.sub_category) {
 
-                
-                    dispatch(Compare(prd))
-                  
+
+                dispatch(Compare(prd))
+
             } else {
                 return
             }
@@ -58,28 +67,28 @@ const Product_Card = (props) => {
 
     }
 
-    function delToCompare(prd){
+    function delToCompare(prd) {
         const isFound = compArray.some(element => {
             if (element.prd_id === prd.prd_id) {
-              return true;
+                return true;
             }
-          
-            return false;
-          });
-          
-          if (isFound) {
-            console.log(isFound)
-            let index = compArray.findIndex(function(o){
-                return o.prd_id === prd.prd_id
-              })
-          
-              compArray.splice(index, 1)
-          
-              dispatch(CompareCase(compArray))
 
-          }else{
+            return false;
+        });
+
+        if (isFound) {
+            console.log(isFound)
+            let index = compArray.findIndex(function (o) {
+                return o.prd_id === prd.prd_id
+            })
+
+            compArray.splice(index, 1)
+
+            dispatch(CompareCase(compArray))
+
+        } else {
             return
-          }
+        }
 
     }
 
@@ -95,7 +104,6 @@ const Product_Card = (props) => {
         products.sort(sorts).filter(prds => prds.name.toLowerCase().includes(searchQuery)).map(function (prd) {
 
             return (
-
                 <div key={prd.prd_id} className="ProductCard ms-3 d-flex flex-column flex-grow-1 shadow bg-white mx-1 my-2 position-relative" style={{ width: "14.8rem" }}>
                     {prd.discount > 0 ? <div className='badge badgeDiscount ms-3 position-absolute d-flex justify-content-center align-items-center mt-4 '>{prd.discount}% OFF</div>
                         : <div></div>
@@ -113,7 +121,9 @@ const Product_Card = (props) => {
                             <div>
                                 <StarRating size={5} value={0} disable />
                             </div>
-                            <p className="font-body text-sm textcarddec" >{prd.name}</p>
+                            {currentLanguageCode === 'ar' ? (<p className="font-body text-sm textcarddec" >{prd.nameAR}</p>) : (<p className="font-body text-sm textcarddec" >{prd.name}</p>)}
+
+                            {/* <p className="font-body text-sm textcarddec" >{prd.name}</p> */}
 
                             {prd.discount <= 0 || prd.discount == null ?
                                 <div className='d-flex align-items-center'>
@@ -131,23 +141,23 @@ const Product_Card = (props) => {
                             <p className="font-body text-sm">{t("ww.label")}</p>
                         </Link>
                         {compArray.find(ele => {
-                            if (ele.prd_id === prd.prd_id){
+                            if (ele.prd_id === prd.prd_id) {
                                 return (
-                                <button type="button" class="compareButtonAdded p-3 btn-warning text-sm mb-2" >
-                                    Added
-                                </button>)
+                                    <button type="button" class="compareButtonAdded p-3 btn-warning text-sm mb-2" >
+                                        Added
+                                    </button>)
                             }
                         })
-                        ?
+                            ?
                             <button type="button" class="compareButtonAdded p-3 btn-warning text-sm mb-2" onClick={() => delToCompare(prd)}>
-                                 Added
+                                Added
                             </button>
                             :
                             <button type="button" class="compareButton p-3 text-sm mb-2" onClick={() => addToCompare(prd)}>
                                 <MdCompare className="mx-1" size={18} />
                                 {t("367.label")}
                             </button>
-        }
+                        }
                     </div>
                 </div>
 
@@ -158,4 +168,7 @@ const Product_Card = (props) => {
 
 
 
+
 export default Product_Card;
+
+

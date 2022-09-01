@@ -11,7 +11,6 @@ import Cart from './Cart/Cart';
 import PayInstallment from './PayInstallment/PayInstallment';
 import StoreLocator from './StoreLocator/StoreLocator';
 import Footer from './Footer/Footer';
-import Product_Details from './Product_Details/Product_Details';
 import { SearchProvider } from './Shared/Contexts/SearchProvider';
 import { getCategory } from './Shared/Firebase/Products_Functions';
 import React, { Component, Suspense ,useEffect , useState} from "react";
@@ -19,28 +18,42 @@ import "./App.css";
 import "./localize/i18n";
 import Advantages from "./localize/Advantages"
 import Compares from "./Compare/compare"
-import LanguageSelector from "./localize/LanguageSelector"
-
+import Compare from "./Compare/compare"
+import useAuth from './useAuth';
+import Protected from './protected/protected';
+import LanguageSelector from "./localize/LanguageSelector";
+import {CartProvider} from "./Shared/Contexts/cartContext"
+import Wishlist from './My Wishlist/Wishlist';
+import Overview_Component from './Overview_Component/Overview_Component';
+import Wishlist_Component from './Wishlist_Component/Wishlist_Component';
+import Installments_Component from './Installments_Component/Installments_Component';
+import Side_Account from './Side_Account/Side_Account';
+import Account_Overview from './Account_Overview/Account_Overview';
+import Account_Setting from './Account_Setting/Account_Setting';
+import Address_Book from './address book/Address_Book';
+import Slider from 'react-slick/lib/slider';
+import Product_Card from './Shared/Product_Card/Product_Card';
+import Product_Component from './Shared/Product_Component/Product_Component';
+import Product_Details from './Product_Details/Product_Details';
+import { ProductByCatProvider } from './Shared/Contexts/ProductByCatProvider';
 
 
 function App() {
-
-
-const [searchQuery, setSearchQuery] = useState("")
-
-
+  const [searchQuery, setSearchQuery] = useState("")
+  const [isAuth, login, logout] = useAuth(false)
+    
   return (
 
     <div>
     <Suspense fallback={null}>
 
-
+<LanguageSelector />
 {/* <Introduction /> */}
 
 <Advantages />
 <LanguageSelector />
 </Suspense>
-      <Router>
+<Router>
         <SearchProvider value={{ searchQuery, setSearchQuery }}>
         
             <div >
@@ -82,6 +95,4 @@ const [searchQuery, setSearchQuery] = useState("")
 }
 
 export default App;
-
-
  

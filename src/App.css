@@ -4,7 +4,7 @@
 }
 .ProductCard__Details {
   border-radius: 30px;
-  margin-top: 1.25rem ;
+  margin-top: 1.25rem  ;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
@@ -12,6 +12,7 @@
 }
 .text-sm {
   font-size: 0.875rem;
+  height: 4rem;
   height: 4rem;
 }
 .font-body {
