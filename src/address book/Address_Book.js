@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { MdEditCalendar } from "react-icons/md";
@@ -18,10 +18,58 @@ import { GoLocation } from "react-icons/go";
 import { GiDirectionSign, GiStairs } from "react-icons/gi";
 import './Address_Book.css'
 import { useTranslation } from "react-i18next";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../Firebase Configration/Firebase";
+import { doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
 
 const Address_Book= () => {
-
+  const [userData, setUserData] = useState({});
+  const [email, setEmail] = useState("");
+  const [FirstName, setFirstName] = useState("");
     const { t, i18n } = useTranslation();
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setEmail(user.email);
+        }
+      });
+      // getproduct();
+    }, []);
+    useEffect(() => {
+      console.log(email);
+      if (email) {
+        getUser();
+      }
+    }, [email]);
+    // }
+    // const loggedUser = GetCurrentUser()
+    // if(loggedUser){console.log(loggedUser[0])}
+  
+    const getUser = async () => {
+      await getDoc(doc(db, "users", email)).then((res) => {
+        console.log(res.data());
+        setUserData(res.data());
+      });
+    };
+    const updateUserData = () => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          updateDoc(doc(db, "users", `${user.email}`), {
+            Name: FirstName,
+          })
+            .then(() => {
+              setFirstName("");
+  
+              getUser();
+            })
+            .catch((error) => {
+              console.log(error.messege);
+            });
+        } else {
+          console.log("Error updating data");
+        }
+      });
+    };
 
   return (
     <>
@@ -43,7 +91,7 @@ const Address_Book= () => {
             type="email"
             className="form-control"
             aria-describedby="emailHelp"
-            placeholder={t("353.label")}
+            placeholder={userData.Name}
             required
           />
            <label className="account_label">
@@ -58,7 +106,7 @@ const Address_Book= () => {
             id="address_form"
             type="password"
             class="form-control "
-            placeholder={t("354.label")}
+            placeholder={userData.Phone}
             required
           />
           <label className="account_label">

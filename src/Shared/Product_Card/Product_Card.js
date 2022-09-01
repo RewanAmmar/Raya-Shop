@@ -14,6 +14,8 @@ import CompareCase from '../../store/actions/comparecase';
 import { db } from '../../Firebase Configration/Firebase'
 import { updateDoc, doc, arrayUnion } from 'firebase/firestore';
 import cookies from "js-cookie";
+import {auth} from  '../../Firebase Configration/Firebase'
+import { onAuthStateChanged } from 'firebase/auth';
 
 
 const Product_Card = (props) => {
@@ -29,7 +31,7 @@ const Product_Card = (props) => {
 
     const { searchQuery, setSearchQuery } = useContext(search)
     const dispatch = useDispatch()
-
+    const [email, setEmail] = useState('')
     const compArray = useSelector((state) => state.compareReducer.compare)
 
     function sorts(a, b) {
@@ -92,11 +94,32 @@ const Product_Card = (props) => {
 
     }
 
+    const addToWishlist = (prd) => { 
+        
+        const cartDocRef = doc(db, `users/${email}`);
+        updateDoc(cartDocRef, {
+          wishlist: arrayUnion({...prd, "Quantity":1, }),
+        });
+        };
+      
+
     useEffect(() => {
 
+        onAuthStateChanged(auth, (user) => {
 
+            if (user)
+  
+  {
+  
+      setEmail(user.email)
+      console.log(user)
+  
+  }
+  
+  });
 
     }, [sort]);
+
 
 
 
@@ -108,10 +131,11 @@ const Product_Card = (props) => {
                     {prd.discount > 0 ? <div className='badge badgeDiscount ms-3 position-absolute d-flex justify-content-center align-items-center mt-4 '>{prd.discount}% OFF</div>
                         : <div></div>
                     }
-                    <Link to={{ pathname: `/Details/${prd.prd_id}`, prdObj: prd }} style={{ textDecoration: 'none', color: 'black' }}>
+                    
                         <div className="d-flex position-absolute heart">
-                            <FiHeart className="loveBtn grow" />
+                            <FiHeart className="loveBtn grow" onClick={() => addToWishlist(prd)}/>
                         </div>
+                        <Link to={{ pathname: `/Details/${prd.prd_id}`, prdObj: prd }} style={{ textDecoration: 'none', color: 'black' }}>
                         <div className="my-4 d-flex justify-content-center">
                             <img src={prd.img} alt='Samsung' loading="lazy" className="object-contain grow mt-5" width={"70%"} height={"150rem"} />
                         </div>

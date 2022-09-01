@@ -36,11 +36,29 @@ import Product_Card from './Shared/Product_Card/Product_Card';
 import Product_Component from './Shared/Product_Component/Product_Component';
 import Product_Details from './Product_Details/Product_Details';
 import { ProductByCatProvider } from './Shared/Contexts/ProductByCatProvider';
+import { onAuthStateChanged,} from "firebase/auth";
+import {auth} from './Firebase Configration/Firebase'
+import Address_Component from './Address_Component/Address_Component';
+import Order_Component from './Orders_Component/Orders_Component';
 
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [isAuth, login, logout] = useAuth(false)
+
+  const [isAuth,setAuth]= useState()
+useEffect(() => {
+          onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser==null){
+              setAuth(false)
+
+              
+            }else{
+              setAuth(true)
+
+            }
+          });
+        
+        },)
     
   return (
 
@@ -79,6 +97,13 @@ function App() {
             <Route path='/cart' exact component={Cart} />
             <Route path='/payInstallment' exact component={PayInstallment} />
             <Route path='/storeLocator' exact component={StoreLocator} />
+            <Route path='/wishlist' exact component={Wishlist_Component}/>
+            <Route path='/Address_Component' exact component={Address_Component}/>
+            <Route path='/order' exact component={Order_Component}/>
+            {/* <Route path='/Account_Overview' exact component={}/> */}
+            <Route path='/Installments_Component' exact component={Installments_Component} />
+            <Route path='/storeLocator' exact component={StoreLocator} />
+            <Protected path="/MyAccount" component={Overview_Component} isLogin={isAuth}/>
           </Switch>
           {/* <Footer /> */}
           </div>

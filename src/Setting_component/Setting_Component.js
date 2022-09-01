@@ -1,9 +1,9 @@
 import React from 'react'
-import Account_Overview from '../Account_Overview/Account_Overview'
 import Side_Account from '../Side_Account/Side_Account'
-import Cart from './../Cart/Cart';
 
-export default function Order_Component() {
+import Account_Setting from './../Account_Setting/Account_Setting';
+
+export default function Setting_Component() {
   return (
     <>
     <div className='container'>
@@ -12,7 +12,7 @@ export default function Order_Component() {
             <Side_Account />
         </div>
         <div className="col-md-8">
-          <Cart/>        
+          <Account_Setting/>        
         </div>
       </div>
     </div>

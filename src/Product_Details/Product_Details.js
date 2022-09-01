@@ -15,26 +15,47 @@ import { BsCart2, BsShieldCheck } from "react-icons/bs"
 import { BsJournalBookmark } from "react-icons/bs"
 import { GrSecure } from "react-icons/gr"
 import { BiStoreAlt } from "react-icons/bi"
-
+import { db, auth } from "../Firebase Configration/Firebase";
+import { updateDoc, doc, arrayUnion } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
 import { useTranslation } from "react-i18next";
 
 export default function Product_Details(props) {
     const { t, i18n } = useTranslation();
 
     const [prd, setPrd] = useState({})
+    const [email, setEmail] = useState("");
 
     const [spacification, setSpacification] = useState([])
 
-
+    const addToCart = () => {
+        const cartDocRef = doc(db, "users", email);
+        updateDoc(cartDocRef, {
+            order: arrayUnion({ ...prd, Quantity: 1 }),
+        });
+    };
 
     useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setEmail(user.email);
+                console.log(user);
+            }
+        }, [email]);
+        setPrd(props.location.prdObj);
 
-        setPrd(props.location.prdObj)
-
-
-        setSpacification(props.location.prdObj.specifications)
-
+        setSpacification(props.location.prdObj.specifications);
     }, [prd]);
+
+    const [count, setCount] = useState(0);
+    const inc = () => {
+        setCount(count + 1);
+    };
+    const dec = () => {
+        if (count > 0) setCount(count - 1);
+    };
+
 
     const settings = {
         className: "slider variable-width",
@@ -89,14 +110,6 @@ export default function Product_Details(props) {
     };
 
 
-    const [count, setCount] = useState(0);
-    const inc = () => {
-        setCount(count + 1);
-    }
-    const dec = () => {
-        if (count > 0)
-            setCount(count - 1);
-    }
 
     return (
         <>
@@ -111,25 +124,22 @@ export default function Product_Details(props) {
 
                                 <Slider className='d-flex justify-content-center align-items-center m-auto' {...setting}>
                                     <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
-                                        <img src={prd.img} width={"80%"}/>
+                                        <img src={prd.img} width={"330rem"}  />
                                     </div>
                                     <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
-                                        <img src={prd.img} width={"80%"}/>
+                                        <img src={prd.img} width={"330rem"}  />
                                     </div>
                                     <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
-                                        <img src={prd.img} width={"80%"}/>
+                                        <img src={prd.img} width={"330rem"}  />
                                     </div>
                                     <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
-                                        <img src={prd.img} width={"80%"}/>
-                                    </div>
-                                    <div className='Image_Card_Details d-flex justify-content-center align-items-center'>
-                                        <img src={prd.img} width={"80%"}/>
+                                        <img src={prd.img} width={"330rem"}  />
                                     </div>
                                 </Slider>
 
                             </div>
 
-                            
+
                         </div>
                         <div className='col-lg-6 col-12 m-3'>
                             <div className='col-12 d-flex'>
@@ -154,7 +164,7 @@ export default function Product_Details(props) {
                             </div>
                             <div className='col-12 d-flex align-items-center mt-4 Product_Specifications p-3'>
                                 <div className='col-8'>
-                                {t("a.label")} 
+                                    {t("a.label")}
                                 </div>
                                 <div className='col-4'>
                                     <a href='#'>{t("b.label")} <AiOutlineRight /></a>
@@ -171,7 +181,7 @@ export default function Product_Details(props) {
                             <div class="line col-md-6 col-12 mt-2"></div>
 
                             <div className='col-12 mt-4 d-flex'>
-                                <button className='btn col-5 d-flex flex-grow-1 justify-content-center align-items-center me-2 Add_To_Cart px-5 py-3'><BsCart2 className='mx-2' size={25} />{t("c.label")} </button>
+                                <button className='btn col-5 d-flex flex-grow-1 justify-content-center align-items-center me-2 Add_To_Cart px-5 py-3' onClick={() => addToCart()}><BsCart2 className='mx-2' size={25} />{t("c.label")} </button>
                                 <button className='btn col-5 d-flex flex-grow-1 justify-content-center align-items-center ms-2 Add_To_Compare px-5 py-3'>{t("d.label")} </button>
                             </div>
                             <div className='col-12 mt-4 d-flex'>
@@ -243,7 +253,7 @@ export default function Product_Details(props) {
                             </a>
                             <div className="collapse" id="Description">
                                 <div className='d-flex flex-column '>
-                                <p className='Product_Description_txt'>Brand: Xiaomi</p>
+                                    <p className='Product_Description_txt'>Brand: Xiaomi</p>
                                     <p className='Product_Description_txt'>Memory Capacity: 128GB</p>
                                     <p className='Product_Description_txt'>Ram: 8GB</p>
                                     <p className='Product_Description_txt'>Color: Grey</p>

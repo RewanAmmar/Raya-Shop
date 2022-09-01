@@ -246,7 +246,7 @@
 }
 
 .mobtext {
-
+  background-image: url(../assets/mob.webp);
   width: 350px;
   height: 350px;
   background-repeat: no-repeat;
@@ -263,7 +263,7 @@
 }
 
 .tvtext {
-
+  background-image: url(../assets/tv.webp);
   width: 350px;
   height: 350px;
   background-repeat: no-repeat;
@@ -282,7 +282,7 @@
 }
 
 .largetext {
-
+  background-image: url(../assets/1659354319927.webp);
   width: 350px;
   height: 350px;
   background-repeat: no-repeat;
@@ -302,7 +302,7 @@
 }
 
 .smalltext {
-
+  background-image: url(../assets/1659354412277.webp);
   width: 350px;
   height: 350px;
   background-repeat: no-repeat;
@@ -476,4 +476,8 @@
   background-color: red;
   color: white;
   border-radius: 30px;
+}
+#dropdown-basic{
+  background-color: #001c46;
+  color:white;
 }

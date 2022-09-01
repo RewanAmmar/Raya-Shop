@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { BsPersonFill } from "react-icons/bs";
 import { MdEditCalendar } from "react-icons/md";
@@ -8,21 +8,68 @@ import { AiFillSetting } from "react-icons/ai";
 import { FiShoppingBag } from "react-icons/fi";
 import './Side_Account.css'
 import { useTranslation } from "react-i18next";
-import { auth } from '../Firebase Configration/Firebase';
-import {  useHistory } from 'react-router-dom';
 
+import {  useHistory } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { Link } from 'react-router-dom';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../Firebase Configration/Firebase";
+import { doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
 
 const Side_Account= () => {
 
     const history = useHistory()
+    const [userData, setUserData] = useState({});
+    const [email, setEmail] = useState("");
+    const [FirstName, setFirstName] = useState("");
+      const { t, i18n } = useTranslation();
+      useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setEmail(user.email);
+          }
+        });
+        // getproduct();
+      }, []);
+      useEffect(() => {
+        console.log(email);
+        if (email) {
+          getUser();
+        }
+      }, [email]);
+      // }
+      // const loggedUser = GetCurrentUser()
+      // if(loggedUser){console.log(loggedUser[0])}
+    
+      const getUser = async () => {
+        await getDoc(doc(db, "users", email)).then((res) => {
+          console.log(res.data());
+          setUserData(res.data());
+        });
+      };
+      const updateUserData = () => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            updateDoc(doc(db, "users", `${user.email}`), {
+              Name: FirstName,
+            })
+              .then(() => {
+                setFirstName("");
+    
+                getUser();
+              })
+              .catch((error) => {
+                console.log(error.messege);
+              });
+          } else {
+            console.log("Error updating data");
+          }
+        });
+      };
 
-    const { t, i18n } = useTranslation();
-
-    const handleLogout = () =>{
-      auth.signOut().then(()=>{
-        history.push("/login")
-      })
-    }
+    const logout = async () => {
+      await signOut(auth);
+    };
 
   return (
     <>
@@ -56,50 +103,50 @@ const Side_Account= () => {
                   </a>
                 </li>
                 <li className="pb-4 pt-1  ">
-                  <a className="d-flex items-center account_a">
+                  <Link to='/order'><a className="d-flex items-center account_a">
                     <FiShoppingBag size={25} />
                     <span className="ml-4 whitespace-nowrap lg:whitespace-normal text-sm font-bold  account_span">
                     {t("308.label")}
                     </span>
-                  </a>
+                  </a></Link>
                 </li>
                 <li className=" pb-4 pt-1 ">
-                  <a className="d-flex items-center account_a">
+                  <Link to='/Installments_Component'><a className="d-flex items-center account_a">
                     <MdEditCalendar size={25} />
                     <span className="ml-4 whitespace-nowrap lg:whitespace-normal text-sm font-bold account_span">
                     {t("309.label")}
                     </span>
-                  </a>
+                  </a></Link>
                 </li>
                 <li className=" pb-4 pt-1  ">
-                  <a className="d-flex items-center account_a">
+                  <Link to='/wishlist'><a className="d-flex items-center account_a">
                     <BsFillHeartFill size={25} />
                     <span className="ml-4 whitespace-nowrap lg:whitespace-normal text-sm font-bold  account_span">
                     {t("310.label")}
                     </span>
-                  </a>
+                  </a></Link>
                 </li>
                 <li className=" pb-4 pt-1  ">
-                  <a className="d-flex items-center account_a">
+                  <Link to='/Address_Component'><a className="d-flex items-center account_a">
                     <HiLocationMarker size={25} />
                     <span className="ml-4 whitespace-nowrap lg:whitespace-normal text-sm font-bold  account_span">
                     {t("311.label")}
                     </span>
-                  </a>
+                  </a></Link>
                 </li>
                 <li className=" pb-4 pt-1 ">
-                  <a className="d-flex items-center account_a">
+                  <Link to='/Account_Setting'><a className="d-flex items-center account_a">
                     <AiFillSetting size={25} />
                     <span className="ml-4 whitespace-nowrap lg:whitespace-normal text-sm font-bold  account_span">
                     {t("312.label")}
                     </span>
-                  </a>
+                  </a></Link>
                 </li>
                 <li className=" pb-4 pt-1" >
-                  <a className="d-flex items-center account_a">
-                    <RiLogoutBoxRLine size={40} className="logout_icon"onClick={handleLogout} />
+                  <Link to='/home'><a className="d-flex items-center account_a">
+                    <RiLogoutBoxRLine size={40} className="logout_icon"onClick={logout} />
                     <span className=" font-bold account_logout">{t("313.label")}</span>
-                  </a>
+                  </a></Link>
                 </li>
               </ul>
             </div>

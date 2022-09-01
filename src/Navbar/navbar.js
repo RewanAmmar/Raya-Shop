@@ -21,21 +21,94 @@ import { useSelector, useDispatch } from 'react-redux';
 import productComData from './../store/actions/productComData';
 import { search } from './../Shared/Contexts/SearchProvider';
 import { useTranslation } from "react-i18next";
-import { collection, query, where, getDocs } from 'firebase/firestore';
 import { auth, db } from '../Firebase Configration/Firebase'
-import Dropdown from 'react-bootstrap/Dropdown';
 import cookies from "js-cookie";
+import Dropdown from 'react-bootstrap/Dropdown';
+import { BsPersonFill } from "react-icons/bs";
+import { FiShoppingBag } from "react-icons/fi";
+import { MdEditCalendar } from "react-icons/md";
+import { BsFillHeartFill } from "react-icons/bs";
+import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
 
 
 export default function Navbar() {
 
   const { t, i18n } = useTranslation();
   const currentLanguageCode = cookies.get("i18next");
-  const changeLanguage = (e) => {
 
-    i18n.changeLanguage(e.target.value);
+  const [orders, setOrders] = useState([])
+  const [userData, setUserData] = useState({});
+  const [email, setEmail] = useState("");
+  const [FirstName, setFirstName] = useState("");
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setEmail(user.email);
+        }
+      });
+      // getproduct();
+    }, [orders]);
+    useEffect(() => {
+      // console.log(email);
+      if (email) {
+        getUser();
+      }
+    }, [email,orders]);
+    // }
+    // const loggedUser = GetCurrentUser()
+    // if(loggedUser){console.log(loggedUser[0])}
+  
+    const getUser = async () => {
+      await getDoc(doc(db, "users", email)).then((res) => {
+        // console.log(res.data());
+        setUserData(res.data());
+        setOrders(res.data().order);
+        // console.log(orders.length)
+      });
+    };
+    const updateUserData = () => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          updateDoc(doc(db, "users", `${user.email}`), {
+            Name: FirstName,
+          })
+            .then(() => {
+              setFirstName("");
+  
+              getUser();
+            })
+            .catch((error) => {
+              // console.log(error.messege);
+            });
+        } else {
+          // console.log("Error updating data");
+        }
+      });
+    };
+
+const changeLanguage = (e) => {
+
+  i18n.changeLanguage(e.target.value);
+}
+const [show,setshow]= useState()
+const [userr, setUserr] = useState({});
+
+const logout = async () => {
+  await signOut(auth);
+};
+
+onAuthStateChanged(auth, (currentUser) => {
+  if (currentUser==null){
+    setshow(false)
+
     
+  }else{
+    setshow(true)
+    setUserr(currentUser);
+
   }
+});
 
   const [mainCategory, setMainCategory] = useState([])
   const [subCategory, setSubCategory] = useState([])
@@ -253,9 +326,30 @@ export default function Navbar() {
                   />
                 </div>
                 <div className=' col-6 d-flex justify-content-end  col-xl-4  order-xl-3 order-2 mr-5 pr-5 pt-3 '>
+                  
+                {show===false&&
+                <div> 
                   <Link to="/register"><a className='Login me-4' href='#'>{t("login.label")}</a></Link>
+                  </div>
+                  }
+                  {show===true&& 
+                  <Dropdown>
+      <Dropdown.Toggle  id="dropdown-basic">
+      Welcome {userData.Name}
+      </Dropdown.Toggle>
 
-                  <a className='sss text-light ms-4 me-3' href='#'> <BsCart2 size={25} /> </a>
+      <Dropdown.Menu>
+        <Link to="/MyAccount"> <BsPersonFill size={25} /><Dropdown.Item href="#/action-1">Account Overview</Dropdown.Item></Link>
+        <Link to="/cart"> <FiShoppingBag size={25} /><Dropdown.Item href="#/action-2">My Orders</Dropdown.Item></Link>
+        <Link to="/Installments_Component"><MdEditCalendar size={25} /><Dropdown.Item href="#/action-3">My Installments</Dropdown.Item></Link>
+        <Link to="/wishlist"> <BsFillHeartFill size={25} /><Dropdown.Item href="#/action-3">My Wishlist</Dropdown.Item></Link>
+        <Link to='/home'><Dropdown.Item href="#/action-3" onClick={logout}>Logout</Dropdown.Item></Link>
+      </Dropdown.Menu>
+    </Dropdown>
+  }
+                  <Link to="/cart"><a className='sss text-light ms-4 me-3' href='#'> <BsCart2 size={25} />
+                  <button className='cart-icon'>{orders.length}</button>
+                   </a></Link>
                 </div>
               </div>
             </div>

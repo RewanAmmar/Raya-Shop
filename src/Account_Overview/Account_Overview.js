@@ -5,36 +5,86 @@ import {BsFillArrowRightSquareFill} from "react-icons/bs"
 import {auth, db} from '../Firebase Configration/Firebase'
 import { useTranslation } from "react-i18next";
 import { collection, query, where, getDocs } from 'firebase/firestore';
-
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  arrayRemove,
+  
+} from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
   const Account_Overview= () => {
-
+const [userData, setUserData] =useState({})
+const [email, setEmail] = useState("");
+const [FirstName,setFirstName] = useState("")
+const [LastName,setLastName] = useState("")
       const { t, i18n } = useTranslation();
 
-      function GetCurrentUser(){
-        const [user, setUser] = useState('')
-        const userCollectionRef = collection(db,"users")
+      // function GetCurrentUser(){
+      //   const [user, setUser] = useState('')
+      //   const userCollectionRef = collection(db,"users")
 
-        useEffect(()=>{
-          auth.onAuthStateChanged(userLogged =>{
-             if(userLogged){
-              const getUsers = async () =>{
-                const q = query(collection(db,"users"),where("uid","==",userLogged.uid))
-                console.log(q)
-                const data = await getDocs(q)
-                setUser(data.docs.map((doc)=>({...doc.data(),id:doc.id})))
-              }
-              getUsers();
-             }else{
-              setUser(null)
-             }
-          })
-        },[])
-        return user
-      }
-      const loggedUser = GetCurrentUser()
+        
+      //   return user
+      useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setEmail(user.email);
+          }
+        });
+        // getproduct();
+       
+      },[]);
+      useEffect(() => {
+        console.log(email);
+        if (email) {
+          getUser();
+        }
+      }, [email]);
+      // }
+      // const loggedUser = GetCurrentUser()
       // if(loggedUser){console.log(loggedUser[0])}
 
+      const getUser = async () => {
+        await getDoc(doc(db, "users", email)).then((res) => {
+          console.log(res.data());
+          setUserData(res.data());
+        });
+      }
+      const updateUserData = () => {
 
+        onAuthStateChanged(auth, (user) => {
+    
+          if (user) {
+    
+    
+        updateDoc(doc(db, "users", `${user.email}`), {
+    
+          Name: FirstName,
+    
+        
+    
+        }).then(() => {
+    
+          setFirstName("")
+    
+          getUser()
+    
+    
+    
+          }).catch((error) => {
+    
+            console.log(error.messege);
+    
+          })
+    
+        } else {
+    
+          console.log("Error updating data")
+    
+        }
+      });
+    };
 
   return (
     <>
@@ -49,15 +99,16 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Name"
-                readOnly
+                  placeholder={userData.Name}
+                  onChange={(text) => setFirstName(text)}           
+               
                 />
               </div>
               <div class="col">
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Phone Number"
+                  placeholder={userData.Phone}
                   readOnly
                 />
               </div>
@@ -65,7 +116,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Email"
+                  placeholder={userData.Email}
                 readOnly
                 />
               </div>

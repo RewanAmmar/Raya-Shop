@@ -1,11 +1,20 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import './cart.css'
 import EachProduct from './EachProduct';
 import Footer from '../Footer/Footer';
+import { db, auth } from "./../Firebase Configration/Firebase";
+
 import SliderShared from './Slider';
 import { useTranslation } from "react-i18next";
-import Paypal from '../paypal'
+import {onAuthStateChanged } from 'firebase/auth';
 
+import { 
+  doc,
+  getDoc,
+  updateDoc,
+  arrayRemove,
+  collection,
+} from "firebase/firestore";
  
 
 
@@ -35,7 +44,7 @@ function SampleNextArrow(props) {
       const { t, i18n } = useTranslation();
   
       const[Orders,setOrders]=useState([])
-
+      const [email, setEmail] = useState("");
 
     const settings = {
         className: "slider variable-width",
@@ -80,17 +89,39 @@ function SampleNextArrow(props) {
     var taxPrice = itemsPrice * 0.1;
     var shippingPrice = itemsPrice > 1000 ? 0 : 20;
     var totalPrice = itemsPrice + taxPrice + shippingPrice;
-    const [checkout, setCheckOut ] = useState(false);
+    const getproduct = async () => {
+      await getDoc(doc(db, "users", email)).then((res) => {
+        console.log(res.data());
+        setOrders(res.data().order);
+      });
+    };
+    // const cartDocRef = doc(db,  "users",`${email}`);
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setEmail(user.email);
+        }
+      });
+      // getproduct();
+      console.log(Orders);
+    },[itemsPrice]);
+    useEffect(() => {
+      console.log(email);
+      if (email) {
+        getproduct();
+      }
+    }, [email,itemsPrice]);
+
   return (
     <>
 
-     <div className='cartComponent'>
+     <div className='cartComponent container'>
         <div className='container d-flex flex-column align-items-center'>
             <h2>{t("314.label")}</h2>
-            <p>{t("315.label")}</p>
+            {/* <p>{t("315.label")}</p> */}
             <div className='d-flex justify-content-between my-5 forResponsCart'>
                 {/* eact product  */}
-                <div className='d-flex flex-column'>
+                <div className='d-flex border-5 flex-column'>
 
                 <EachProduct />                
                 
@@ -108,12 +139,12 @@ function SampleNextArrow(props) {
                             </div>
                             <div className=' d-flex  justify-content-between my-2'> 
                                 <span>{t("318.label")}</span>
-                                <span>{t("319.label")}<span>{taxPrice.toFixed(2)} EGP</span></span>
+                               {taxPrice.toFixed(2)} EGP
                                 
                             </div>
                             <div className=' d-flex  justify-content-between my-2'> 
                                 <span>{t("320.label")}</span>
-                                <span>{t("321.label")}<span> {shippingPrice.toFixed(2)}EGP</span></span>
+                               {shippingPrice.toFixed(2)}EGP
                                 
                             </div>
                             <div></div>
@@ -125,9 +156,7 @@ function SampleNextArrow(props) {
                             <div><span> {t("323.label")} </span><p>{t("324.label")}</p></div>
                             <button className='btn text-white '>{t("325.label")}</button>
                             <div></div>
-                            {checkout ? (<Paypal />) : (
-                            <button className='btn'onClick={() => { setCheckOut(true);}}>{t("327.label")}</button>  
-                           )}
+                            <button className='btn'>{t("327.label")}</button>
                             <div className='d-flex justify-content-around'>
                                 <img src={"https://www.pngall.com/wp-content/uploads/2017/05/Visa-Logo-PNG-Pic.png"}/>
                                 <img src={"https://www.pngitem.com/pimgs/m/1-17788_mastercard-logo-transparent-vector-logo-png-mastercard-png.png"}/>
@@ -145,7 +174,7 @@ function SampleNextArrow(props) {
         </div>
      </div>
     <SliderShared/>
-     {/* <Footer/> */}
+     
 
     
     </>

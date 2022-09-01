@@ -98,8 +98,7 @@
     /* eachProduct */
     
 .eachProduct{
-    max-height: 200px;
-    min-width: 400px;
+    border-radius: 40px;
 
 }
 .eachProduct img{
