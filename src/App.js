@@ -19,7 +19,7 @@ import "./localize/i18n";
 import Advantages from "./localize/Advantages"
 import Compares from "./Compare/compare"
 import Compare from "./Compare/compare"
-import useAuth from './useAuth';
+
 import Protected from './protected/protected';
 import LanguageSelector from "./localize/LanguageSelector";
 import {CartProvider} from "./Shared/Contexts/cartContext"
@@ -94,13 +94,13 @@ useEffect(() => {
             <Route path='/Details/:prdId' exact component={Product_Details} />
             <Route path='/login' exact component={Login} />
             <Route path='/register' exact component={Register} />
-            <Route path='/cart' exact component={Cart} />
+            <Protected path='/cart'exact  component={Cart} isLogin={isAuth} />
             <Route path='/payInstallment' exact component={PayInstallment} />
             <Route path='/storeLocator' exact component={StoreLocator} />
             <Route path='/wishlist' exact component={Wishlist_Component}/>
             <Route path='/Address_Component' exact component={Address_Component}/>
             <Route path='/order' exact component={Order_Component}/>
-            {/* <Route path='/Account_Overview' exact component={}/> */}
+            
             <Route path='/Installments_Component' exact component={Installments_Component} />
             <Route path='/storeLocator' exact component={StoreLocator} />
             <Protected path="/MyAccount" component={Overview_Component} isLogin={isAuth}/>

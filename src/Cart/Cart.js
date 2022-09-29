@@ -7,7 +7,7 @@ import { db, auth } from "./../Firebase Configration/Firebase";
 import SliderShared from './Slider';
 import { useTranslation } from "react-i18next";
 import {onAuthStateChanged } from 'firebase/auth';
-
+import Paypal from '../paypal'
 import { 
   doc,
   getDoc,
@@ -111,7 +111,7 @@ function SampleNextArrow(props) {
         getproduct();
       }
     }, [email,itemsPrice]);
-
+    const [checkout, setCheckOut ] = useState(false);
   return (
     <>
 
@@ -156,7 +156,9 @@ function SampleNextArrow(props) {
                             <div><span> {t("323.label")} </span><p>{t("324.label")}</p></div>
                             <button className='btn text-white '>{t("325.label")}</button>
                             <div></div>
-                            <button className='btn'>{t("327.label")}</button>
+                            {checkout ? (<Paypal />) : (
+                            <button className='btn'onClick={() => { setCheckOut(true);}}>{t("327.label")}</button>  
+                           )}
                             <div className='d-flex justify-content-around'>
                                 <img src={"https://www.pngall.com/wp-content/uploads/2017/05/Visa-Logo-PNG-Pic.png"}/>
                                 <img src={"https://www.pngitem.com/pimgs/m/1-17788_mastercard-logo-transparent-vector-logo-png-mastercard-png.png"}/>

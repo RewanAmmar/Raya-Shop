@@ -152,8 +152,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <h4> {t("User Logged In:")} </h4>
-      {userr?.email}
+     
       <footer className="footerLogin">
         <p>
           {t("160.label")} <a href="">{t("161.label")} </a>

@@ -210,8 +210,7 @@ const Register = () => {
                     {t("167.label")}
                   </button>
                 </Link>
-                <h4> {t("User Logged In:")} </h4>
-                {userr?.email}
+               
               </div>
             </div>
           </div>

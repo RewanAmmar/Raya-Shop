@@ -297,12 +297,15 @@ onAuthStateChanged(auth, (currentUser) => {
                       <Link to="/payInstallment"><li className='oneli'><a className='onea mx-5' href='#'> <BsWallet2 size={18} />{t("thankyou.label")}</a></li></Link>
                       <li className='oneli'><a className='onea mx-2' href='#'> <FiPhoneCall size={18} />{t("details.label")}</a></li>
                       <Link to="/storeLocator"><li className='oneli'><a className='onea mx-5' href='#'> <TbBuildingStore size={18} /> {t("Advantages.label")}</a></li></Link>
-                      <li className='oneli' onChange={changeLanguage}><a className='onea' href='#'><TbWorld size={18} />
-
-
-                        <input type="radio" value="en" name="language" defaultChecked />English
-                        <input type="radio" value="ar" name="language" />Arabic
-                      </a></li>
+                      <select
+                      onChange={changeLanguage}
+                      type="button"
+                      className="selector-btn"
+                      defaultValue={i18n.language}
+                    >
+                      <option value="en">English</option>
+                      <option value="ar">العربية</option>
+                    </select>
                     </ul>
 
                   </div>

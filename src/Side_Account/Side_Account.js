@@ -75,7 +75,7 @@ const Side_Account= () => {
     <>
    
             <div className="account_number border-b border-primary-100">
-              <h6>{t("304.label")}, Rewan</h6>
+              <h6>{t("304.label")} {userData.Name}</h6>
               <p className="account_paragraph d-flex items-center">
               {t("305.label")}
                 <a href="#" className="d-flex items-center info_a ">
